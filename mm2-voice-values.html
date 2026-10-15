@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script nonce="wXIzgh/cH8WDsD2ovPaxJA" src="https://mail-attachment.googleusercontent.com/__DLD__fed9a1a7ac839431bc758270898f28030fee4f9a619e8b89601b34027ee66c37/resources/setup.js"></script><script nonce="+Q6eCb44Gq329sPffRiIsA" src="https://mail-attachment.googleusercontent.com/__DLD__fed9a1a7ac839431bc758270898f28030fee4f9a619e8b89601b34027ee66c37/resources/frontend.min.js" server="https://localhost:49193" id="__dld-frontend__" async defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MM2 Voice Values</title>
+</head>
+<body>
+  <h1>MM2 Voice Values</h1>
+  <p>Search for an item, or start voice recognition and say a weapon name. Say “reset” or “show all” to show everything.</p>
+
+  <p>
+    <button id="micButton" type="button">Start voice</button>
+    <button id="resetButton" type="button">Reset / Show all</button>
+    <button id="addButton" type="button">Add item</button>
+    <button id="exportButton" type="button">Export list</button>
+    <label>Import list <input id="importInput" type="file" accept="application/json,.json"></label>
+  </p>
+  <p id="status" aria-live="polite">Voice is off.</p>
+  <p><label for="searchInput">Search: </label><input id="searchInput" type="search" placeholder="Weapon name..."></p>
+  <p><label for="typeFilter">Type: </label>
+    <select id="typeFilter">
+      <option value="all">All types</option><option>Ancient</option><option>Godly</option><option>Chroma</option><option>Vintage</option><option>Legendary</option><option>Rare</option><option>Uncommon</option><option>Common</option><option>Pet</option><option>Other</option>
+    </select>
+  </p>
+  <p id="count">0 items</p>
+  <div id="items"></div>
+
+  <dialog id="itemDialog">
+    <form id="itemForm">
+      <h2 id="dialogTitle">Add item</h2>
+      <p><label>Name<br><input id="itemName" required maxlength="100"></label></p>
+      <p><label>Value (leave blank if unknown)<br><input id="itemValue" type="number" min="0" step="any"></label></p>
+      <p><label>Type<br><select id="itemType"><option>Godly</option><option>Ancient</option><option>Chroma</option><option>Vintage</option><option>Legendary</option><option>Rare</option><option>Uncommon</option><option>Common</option><option>Pet</option><option>Other</option></select></label></p>
+      <p><label>Image URL (optional)<br><input id="itemImage" type="url" placeholder="https://..."></label></p>
+      <button type="submit">Save</button>
+      <button id="cancelButton" type="button">Cancel</button>
+    </form>
+  </dialog>
+
+  <p>Values are not automatically verified or live-synced with MM2Values. Check <a href="https://www.mm2values.com/" target="_blank" rel="noopener">MM2Values</a> for current values, then enter or import them here. This file saves edits in your browser.</p>
+
+<script>
+(() => {
+  'use strict';
+  const STORAGE_KEY = 'mm2VoiceValues.simple.v1';
+  // Starter item names only; unknown values are left blank rather than invented.
+  const starterItems = [
+    { name: 'Heartblade', value: null, type: 'Godly', image: '' },
+    { name: 'Harvester', value: null, type: 'Ancient', image: '' },
+    { name: 'Icebreaker', value: null, type: 'Ancient', image: '' },
+    { name: 'Luger', value: null, type: 'Godly', image: '' },
+    { name: 'Chroma Darkbringer', value: null, type: 'Chroma', image: '' },
+    { name: 'Sugar', value: null, type: 'Godly', image: '' },
+    { name: 'Elderwood Scythe', value: null, type: 'Ancient', image: '' },
+    { name: 'Candleflame', value: null, type: 'Godly', image: '' },
+    { name: 'Corrupt', value: null, type: 'Other', image: '' },
+    { name: 'Seer', value: null, type: 'Godly', image: '' }
+  ];
+
+  const $ = id => document.getElementById(id);
+  let items = loadItems();
+  let recognition = null;
+  let listening = false;
+  let editingName = null;
+
+  function loadItems() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      }
+    } catch (error) {}
+    return starterItems.map(item => ({ ...item }));
+  }
+
+  function saveItems() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      $('status').textContent = 'List saved in this browser.';
+    } catch (error) {
+      $('status').textContent = 'Could not save locally in this browser.';
+    }
+  }
+
+  function normalize(text) {
+    return String(text || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function resetSearch() {
+    $('searchInput').value = '';
+    $('typeFilter').value = 'all';
+    renderItems();
+    $('status').textContent = listening ? 'Listening… say an item name or “reset”.' : 'Showing all items.';
+  }
+
+  function handleVoiceCommand(transcript) {
+    const command = normalize(transcript);
+    if (!command) return;
+    if (['reset', 'show all', 'show everything', 'clear', 'all items', 'reset list'].includes(command)) {
+      resetSearch();
+      return;
+    }
+    if (['stop listening', 'stop microphone', 'stop'].includes(command)) {
+      stopVoice();
+      return;
+    }
+
+    const exact = items.find(item => normalize(item.name) === command);
+    const contained = items
+      .filter(item => command.includes(normalize(item.name)))
+      .sort((a, b) => b.name.length - a.name.length)[0];
+    const match = exact || contained;
+    $('searchInput').value = match ? match.name : transcript.trim();
+    $('typeFilter').value = 'all';
+    renderItems();
+    $('status').textContent = match ? 'Showing: ' + match.name : 'Searching for: ' + transcript.trim();
+  }
+
+  function renderItems() {
+    const query = normalize($('searchInput').value);
+    const type = $('typeFilter').value;
+    const filtered = items.filter(item =>
+      (!query || normalize(item.name).includes(query)) &&
+      (type === 'all' || item.type === type)
+    ).sort((a, b) => a.name.localeCompare(b.name));
+
+    $('count').textContent = filtered.length + ' item' + (filtered.length === 1 ? '' : 's');
+    const container = $('items');
+    container.replaceChildren();
+
+    if (!filtered.length) {
+      const message = document.createElement('p');
+      message.textContent = 'No matching items. Try another name or say “reset”.';
+      container.appendChild(message);
+      return;
+    }
+
+    filtered.forEach(item => {
+      const card = document.createElement('section');
+      const heading = document.createElement('h2');
+      heading.textContent = item.name;
+      card.appendChild(heading);
+
+      if (item.image) {
+        const image = document.createElement('img');
+        image.src = item.image;
+        image.alt = item.name;
+        image.width = 100;
+        image.loading = 'lazy';
+        image.onerror = () => image.remove();
+        card.appendChild(image);
+      }
+
+      const category = document.createElement('p');
+      category.textContent = 'Type: ' + (item.type || 'Other');
+      const value = document.createElement('p');
+      value.textContent = 'Value: ' + (item.value === null || item.value === '' || !Number.isFinite(Number(item.value)) ? 'Not entered' : Number(item.value).toLocaleString());
+      card.append(category, value);
+
+      const edit = document.createElement('button');
+      edit.type = 'button';
+      edit.textContent = 'Edit';
+      edit.addEventListener('click', () => openDialog(item));
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.textContent = 'Remove';
+      remove.addEventListener('click', () => {
+        if (confirm('Remove ' + item.name + '?')) {
+          items = items.filter(entry => entry.name !== item.name);
+          saveItems();
+          renderItems();
+        }
+      });
+      card.append(edit, document.createTextNode(' '), remove);
+      card.appendChild(document.createElement('hr'));
+      container.appendChild(card);
+    });
+  }
+
+  function openDialog(item = null) {
+    editingName = item ? item.name : null;
+    $('dialogTitle').textContent = item ? 'Edit item' : 'Add item';
+    $('itemName').value = item ? item.name : '';
+    $('itemValue').value = item && item.value != null ? item.value : '';
+    $('itemType').value = item ? (item.type || 'Other') : 'Godly';
+    $('itemImage').value = item ? (item.image || '') : '';
+    $('itemDialog').showModal();
+  }
+
+  function startVoice() {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      $('status').textContent = 'Speech recognition is not supported in this browser. Try a supported version of Chrome.';
+      return;
+    }
+    if (recognition) {
+      try { recognition.start(); return; } catch (error) {}
+    }
+    recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.continuous = true;
+    recognition.interimResults = false;
+    recognition.onstart = () => {
+      listening = true;
+      $('micButton').textContent = 'Stop voice';
+      $('status').textContent = 'Listening… say a weapon name, “reset”, or “show all”.';
+    };
+    recognition.onresult = event => {
+      const result = event.results[event.results.length - 1][0].transcript.trim();
+      handleVoiceCommand(result);
+    };
+    recognition.onerror = event => {
+      $('status').textContent = event.error === 'not-allowed'
+        ? 'Microphone permission denied. Allow microphone access in browser settings.'
+        : 'Voice recognition error: ' + event.error;
+    };
+    recognition.onend = () => {
+      if (listening) {
+        try { recognition.start(); } catch (error) {}
+      } else {
+        $('micButton').textContent = 'Start voice';
+      }
+    };
+    try { recognition.start(); }
+    catch (error) { $('status').textContent = 'Could not start voice recognition. Try again.'; }
+  }
+
+  function stopVoice() {
+    listening = false;
+    if (recognition) { try { recognition.stop(); } catch (error) {} }
+    $('micButton').textContent = 'Start voice';
+    $('status').textContent = 'Voice is off.';
+  }
+
+  $('micButton').addEventListener('click', () => listening ? stopVoice() : startVoice());
+  $('resetButton').addEventListener('click', resetSearch);
+  $('searchInput').addEventListener('input', renderItems);
+  $('typeFilter').addEventListener('change', renderItems);
+  $('addButton').addEventListener('click', () => openDialog());
+  $('cancelButton').addEventListener('click', () => $('itemDialog').close());
+
+  $('itemForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const name = $('itemName').value.trim();
+    const valueText = $('itemValue').value.trim();
+    const item = {
+      name,
+      value: valueText === '' ? null : Number(valueText),
+      type: $('itemType').value,
+      image: $('itemImage').value.trim()
+    };
+    if (!name || (item.value !== null && (!Number.isFinite(item.value) || item.value < 0))) return;
+    const duplicate = items.find(existing => normalize(existing.name) === normalize(name));
+    if (duplicate && normalize(name) !== normalize(editingName || '')) {
+      if (!confirm('An item with that name exists. Replace it?')) return;
+    }
+    items = items.filter(existing => normalize(existing.name) !== normalize(editingName || '') && normalize(existing.name) !== normalize(name));
+    items.push(item);
+    saveItems();
+    $('itemDialog').close();
+    $('searchInput').value = '';
+    renderItems();
+  });
+
+  $('exportButton').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(items, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'mm2-values.json';
+    link.click();
+    URL.revokeObjectURL(url);
+  });
+
+  $('importInput').addEventListener('change', async event => {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+    try {
+      const data = JSON.parse(await file.text());
+      if (!Array.isArray(data) || !data.every(item => item && typeof item.name === 'string')) {
+        throw new Error('Invalid format');
+      }
+      items = data.map(item => ({
+        name: item.name.trim(),
+        value: item.value === '' || item.value == null ? null : Number(item.value),
+        type: item.type || 'Other',
+        image: item.image || ''
+      })).filter(item => item.name);
+      saveItems();
+      renderItems();
+      $('status').textContent = 'Imported ' + items.length + ' items.';
+    } catch (error) {
+      alert('Could not import that file. Choose a JSON array containing item names and optional values, types, and image URLs.');
+    }
+    event.target.value = '';
+  });
+
+  renderItems();
+})();
+</script>
+</body>
+</html>
