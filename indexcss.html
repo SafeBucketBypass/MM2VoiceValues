@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a0f">
+  <title>MM2 Voice Values</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080a0f;
+      --panel: rgba(18, 22, 32, 0.88);
+      --panel-dark: #111827;
+      --border: rgba(148, 163, 184, 0.2);
+      --border-hover: rgba(96, 165, 250, 0.7);
+      --text: #f8fafc;
+      --muted: #9aa7bb;
+      --accent: #60a5fa;
+      --accent-dark: #2563eb;
+      --success: #34d399;
+      --danger: #fb7185;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 42px 20px 70px;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(37, 99, 235, 0.22), transparent 34%),
+        radial-gradient(circle at 90% 10%, rgba(124, 58, 237, 0.18), transparent 28%),
+        linear-gradient(145deg, #080a0f 0%, #0d111b 52%, #080a0f 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.2;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+
+    main {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 26px;
+      padding: clamp(24px, 5vw, 48px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: linear-gradient(
+        135deg,
+        rgba(22, 30, 48, 0.92),
+        rgba(12, 15, 24, 0.84)
+      );
+      box-shadow: var(--shadow);
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      top: -110px;
+      right: -90px;
+      border-radius: 50%;
+      background: rgba(96, 165, 250, 0.18);
+      filter: blur(8px);
+    }
+
+    .eyebrow {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(2.2rem, 7vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    header > p:last-child {
+      position: relative;
+      z-index: 1;
+      max-width: 690px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .toolbar,
+    .filters,
+    .notice {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 14px;
+      border-radius: 20px;
+    }
+
+    button,
+    input,
+    select {
+      min-height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      background: rgba(7, 10, 17, 0.78);
+      font: inherit;
+      outline: none;
+      transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    button {
+      padding: 0 16px;
+      cursor: pointer;
+      font-weight: 750;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-hover);
+      background: rgba(37, 99, 235, 0.22);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.16);
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.16);
+    }
+
+    #micButton {
+      border-color: rgba(52, 211, 153, 0.45);
+      background: rgba(16, 185, 129, 0.12);
+    }
+
+    #micButton:hover {
+      background: rgba(16, 185, 129, 0.23);
+    }
+
+    #importInput {
+      position: absolute;
+      z-index: -1;
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+    }
+
+    .import-label {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      padding: 0 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 750;
+      background: rgba(7, 10, 17, 0.78);
+      transition: 0.2s ease;
+    }
+
+    .import-label:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-hover);
+      background: rgba(37, 99, 235, 0.22);
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) minmax(180px, 240px);
+      gap: 12px;
+      margin-bottom: 14px;
+      padding: 14px;
+      border-radius: 20px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    input[type="search"],
+    select {
+      width: 100%;
+      padding: 0 14px;
+    }
+
+    #status,
+    #count {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    #status {
+      min-height: 22px;
+      margin: 12px 4px;
+    }
+
+    #count {
+      margin: 20px 4px 12px;
+      font-weight: 800;
+    }
+
+    #items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .item-card {
+      min-height: 220px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: linear-gradient(
+        160deg,
+        rgba(24, 31, 46, 0.94),
+        rgba(13, 17, 27, 0.92)
+      );
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+    }
+
+    .item-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-hover);
+      box-shadow:
+        0 22px 45px rgba(0, 0, 0, 0.34),
+        0 0 25px rgba(37, 99, 235, 0.1);
+    }
+
+    .item-card h2 {
+      margin: 0 0 16px;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .item-card img {
+      display: block;
+      width: 100%;
+      height: 145px;
+      object-fit: contain;
+      margin: 0 0 16px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.22);
+    }
+
+    .item-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 8px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .item-value {
+      color: var(--success);
+      font-weight: 850;
+    }
+
+    .item-type {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 10px;
+      padding: 5px 9px;
+      border: 1px solid rgba(96, 165, 250, 0.32);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(96, 165, 250, 0.1);
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .card-actions button {
+      flex: 1;
+      min-height: 38px;
+      padding: 0 10px;
+      font-size: 0.85rem;
+    }
+
+    .card-actions .remove-button {
+      color: #fecdd3;
+      border-color: rgba(251, 113, 133, 0.26);
+    }
+
+    .card-actions .remove-button:hover {
+      border-color: var(--danger);
+      background: rgba(225, 29, 72, 0.18);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 48px 20px;
+      border: 1px dashed var(--border);
+      border-radius: 20px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .notice {
+      margin-top: 28px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 750;
+    }
+
+    a:hover {
+      color: #bfdbfe;
+    }
+
+    dialog {
+      width: min(480px, calc(100% - 28px));
+      padding: 0;
+      border: 1px solid var(--border-hover);
+      border-radius: 24px;
+      color: var(--text);
+      background: var(--panel-dark);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
+    }
+
+    dialog::backdrop {
+      background: rgba(2, 6, 23, 0.76);
+      backdrop-filter: blur(8px);
+    }
+
+    #itemForm {
+      padding: 26px;
+    }
+
+    #itemForm h2 {
+      margin: 0 0 22px;
+      font-size: 1.5rem;
+    }
+
+    #itemForm p {
+      display: grid;
+      gap: 8px;
+      margin: 16px 0;
+      color: var(--muted);
+    }
+
+    #itemForm input,
+    #itemForm select {
+      width: 100%;
+      margin-top: 7px;
+      padding: 0 12px;
+    }
+
+    .dialog-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .dialog-actions button {
+      flex: 1;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 18px 12px 46px;
+      }
+
+      header {
+        padding: 28px 22px;
+        border-radius: 22px;
+      }
+
+      .toolbar {
+        align-items: stretch;
+      }
+
+      .toolbar button,
+      .import-label {
+        flex: 1 1 calc(50% - 10px);
+        justify-content: center;
+      }
+
+      .filters {
+        grid-template-columns: 1fr;
+      }
+
+      #items {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        gap: 12px;
+      }
+
+      .item-card {
+        padding: 15px;
+        border-radius: 18px;
+      }
+
+      .item-card img {
+        height: 110px;
+      }
+
+      .item-card h2 {
+        font-size: 1rem;
+      }
+
+      .item-meta {
+        display: block;
+        line-height: 1.65;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">MM2 Inventory Tool</p>
+      <h1>MM2 Voice Values</h1>
+      <p>
+        Search for an item, or start voice recognition and say a weapon name.
+        Say “reset” or “show all” to show everything.
+      </p>
+    </header>
+<section class="toolbar" aria-label="List actions">
+  <button id="micButton" type="button">Start voice</button>
+  <button id="resetButton" type="button">Reset / Show all</button>
+  <button id="addButton" type="button">Add item</button>
+  <button id="exportButton" type="button">Export list</button>
+
+  <label class="import-label" for="importInput">
+    Import list
+  </label>
+
+  <input
+    id="importInput"
+    type="file"
+    accept="application/json,.json"
+  >
+</section>
+
+<p id="status" aria-live="polite">Voice is off.</p>
+
+<section class="filters" aria-label="Item filters">
+  <label class="field" for="searchInput">
+    <span>Search</span>
+    <input
+      id="searchInput"
+      type="search"
+      placeholder="Weapon name..."
+    >
+  </label>
+
+  <label class="field" for="typeFilter">
+    <span>Type</span>
+    <select id="typeFilter">
+      <option value="all">All types</option>
+      <option>Ancient</option>
+      <option>Godly</option>
+      <option>Chroma</option>
+      <option>Vintage</option>
+      <option>Legendary</option>
+      <option>Rare</option>
+      <option>Uncommon</option>
+      <option>Common</option>
+      <option>Pet</option>
+      <option>Other</option>
+    </select>
+  </label>
+</section>
+
+<p id="count">0 items</p>
+<div id="items"></div>
+
+<dialog id="itemDialog">
+  <form id="itemForm">
+    <h2 id="dialogTitle">Add item</h2>
+
+    <p>
+      <label>
+        Name<br>
+        <input id="itemName" required maxlength="100">
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Value<br>
+        <input
+          id="itemValue"
+          type="number"
+          min="0"
+          step="any"
+          placeholder="Leave blank if unknown"
+        >
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Type<br>
+        <select id="itemType">
+          <option>Godly</option>
+          <option>Ancient</option>
+          <option>Chroma</option>
+          <option>Vintage</option>
+          <option>Legendary</option>
+          <option>Rare</option>
+          <option>Uncommon</option>
+          <option>Common</option>
+          <option>Pet</option>
+          <option>Other</option>
+        </select>
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Image URL<br>
+        <input
+          id="itemImage"
+          type="url"
+          placeholder="https://..."
+        >
+      </label>
+    </p>
+
+    <div class="dialog-actions">
+      <button type="submit">Save</button>
+      <button id="cancelButton" type="button">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<p class="notice">
+  Values are not automatically verified or live-synced with MM2Values.
+  Check
+  <a
+    href="https://www.mm2values.com/"
+    target="_blank"
+    rel="noopener"
+  >
+    MM2Values
+  </a>
+  for current values, then enter or import them here.
+  This file saves edits in your browser.
+</p>
+
+  </main>
+  <script>
+    (() => {
+      'use strict';
+
+      const STORAGE_KEY = 'mm2VoiceValues.simple.v1';
+
+      /*
+        Keep your complete original starterItems array here.
+        Paste everything from your original script between the brackets.
+      */
+      const starterItems = [
+        { name: 'Travelers Gun', value: null, type: 'Godly', image: '' },
+        { name: 'Evergun', value: null, type: 'Godly', image: '' },
+        { name: 'Constellation', value: null, type: 'Godly', image: '' },
+        { name: 'Evergreen', value: null, type: 'Godly', image: '' },
+        { name: 'Turkey', value: null, type: 'Godly', image: '' },
+        { name: 'Vampires Gun', value: null, type: 'Godly', image: '' },
+        { name: 'Alienbeam', value: null, type: 'Godly', image: '' },
+        { name: 'Darkshot', value: null, type: 'Godly', image: '' },
+        { name: 'Darksword', value: null, type: 'Godly', image: '' },
+        { name: 'Blossom', value: null, type: 'Godly', image: '' },
+        { name: 'Sakura', value: null, type: 'Godly', image: '' },
+        { name: 'Raygun', value: null, type: 'Godly', image: '' },
+        { name: 'Bauble', value: null, type: 'Godly', image: '' },
+        { name: 'Snowcannon', value: null, type: 'Godly', image: '' },
+        { name: 'Sunrise', value: null, type: 'Godly', image: '' },
+        { name: 'Soul', value: null, type: 'Godly', image: '' },
+        { name: 'Rainbow Gun', value: null, type: 'Godly', image: '' },
+        { name: 'Spirit', value: null, type: 'Godly', image: '' },
+        { name: 'Flora', value: null, type: 'Godly', image: '' },
+        { name: 'Rainbow', value: null, type: 'Godly', image: '' },
+        { name: 'Bloom', value: null, type: 'Godly', image: '' },
+        { name: 'Sunset', value: null, type: 'Godly', image: '' },
+        { name: 'Treat', value: null, type: 'Godly', image: '' },
+        { name: 'Flowerwood Gun', value: null, type: 'Godly', image: '' },
+        { name: 'Sweet', value: null, type: 'Godly', image: '' },
+        { name: 'Flowerwood Knife', value: null, type: 'Godly', image: '' },
+        { name: 'Xenoknife', value: null, type: 'Godly', image: '' },
+        { name: 'Bat', value: null, type: 'Godly', image: '' },
+        { name: 'Snow Dagger', value: null, type: 'Godly', image: '' },
+        { name: 'Ocean', value: null, type: 'Godly', image: '' },
+        { name: 'Flowerwood', value: null, type: 'Godly', image: '' },
+        { name: 'Xenoshot', value: null, type: 'Godly', image: '' },
+        { name: 'Blizzard', value: null, type: 'Godly', image: '' },
+        { name: 'Snowstorm', value: null, type: 'Godly', image: '' },
+        { name: 'Waves', value: null, type: 'Godly', image: '' },
+        { name: 'Watergun', value: null, type: 'Godly', image: '' },
+        { name: 'Candy', value: null, type: 'Godly', image: '' },
+        { name: 'Borealis', value: null, type: 'Godly', image: '' },
+        { name: 'Australis', value: null, type: 'Godly', image: '' },
+        { name: 'Iceblaster', value: null, type: 'Godly', image: '' },
+        { name: 'Elderwood Blade', value: null, type: 'Godly', image: '' },
+        { name: 'Pearlshine', value: null, type: 'Godly', image: '' },
+        { name: 'Darkbringer', value: null, type: 'Godly', image: '' },
+        { name: 'Candleflame', value: null, type: 'Godly', image: '' },
+        { name: 'Lugar', value: null, type: 'Godly', image: '' },
+        { name: 'Red Lugar', value: null, type: 'Godly', image: '' },
+        { name: 'Spectre', value: null, type: 'Godly', image: '' },
+        { name: 'Sugar', value: null, type: 'Godly', image: '' },
+        { name: 'Lightbringer', value: null, type: 'Godly', image: '' },
+        { name: 'Elderwood Revolver', value: null, type: 'Godly', image: '' },
+        { name: 'Ornament', value: null, type: 'Godly', image: '' },
+        { name: 'Chroma Gemstone', value: null, type: 'Godly', image: '' },
+        { name: 'Swirly Gun', value: null, type: 'Godly', image: '' },
+        { name: 'Green Lugar', value: null, type: 'Godly', image: '' },
+        { name: 'Laser', value: null, type: 'Godly', image: '' },
+        { name: 'Amerilaser', value: null, type: 'Godly', image: '' },
+        { name: 'Plasmabeam', value: null, type: 'Godly', image: '' },
+        { name: 'Plasmablade', value: null, type: 'Godly', image: '' },
+        { name: 'Hollowgun', value: null, type: 'Godly', image: '' },
+        { name: 'Icebeam', value: null, type: 'Godly', image: '' },
+        { name: 'Iceflake', value: null, type: 'Godly', image: '' },
+        { name: 'Gingermint', value: null, type: 'Godly', image: '' },
+        { name: 'Shark', value: null, type: 'Godly', image: '' },
+        { name: 'Nightblade', value: null, type: 'Godly', image: '' },
+        { name: 'Virtual', value: null, type: 'Godly', image: '' },
+        { name: 'Blaster', value: null, type: 'Godly', image: '' },
+        { name: 'Old Glory', value: null, type: 'Godly', image: '' },
+        { name: 'Ginger Lugar', value: null, type: 'Godly', image: '' },
+        { name: 'Swirly Blade', value: null, type: 'Godly', image: '' },
+        { name: 'Eternalcane', value: null, type: 'Godly', image: '' },
+        { name: 'Lugarcane', value: null, type: 'Godly', image: '' },
+        { name: 'Slasher', value: null, type: 'Godly', image: '' },
+        { name: 'Cookiecane', value: null, type: 'Godly', image: '' },
+        { name: 'Jinglegun', value: null, type: 'Godly', image: '' },
+        { name: 'Gemstone', value: null, type: 'Godly', image: '' },
+        { name: 'Gingerblade', value: null, type: 'Godly', image: '' },
+        { name: 'Battle Axe 2', value: null, type: 'Godly', image: '' },
+        { name: 'Battle Axe', value: null, type: 'Godly', image: '' },
+        { name: 'Minty', value: null, type: 'Godly', image: '' },
+        { name: 'Deathshard', value: null, type: 'Godly', image: '' },
+        { name: 'Bioblade', value: null, type: 'Godly', image: '' },
+        { name: 'Clockwork', value: null, type: 'Godly', image: '' },
+        { name: 'Nebula', value: null, type: 'Godly', image: '' },
+        { name: 'Xmas', value: null, type: 'Godly', image: '' },
+        { name: 'Vampires Edge', value: null, type: 'Godly', image: '' },
+        { name: 'Frostsaber', value: null, type: 'Godly', image: '' },
+        { name: 'Fang', value: null, type: 'Godly', image: '' },
+        { name: 'Spider', value: null, type: 'Godly', image: '' },
+        { name: 'Heat', value: null, type: 'Godly', image: '' },
+        { name: 'Tides', value: null, type: 'Godly', image: '' },
+        { name: 'Hollows Edge', value: null, type: 'Godly', image: '' },
+        { name: 'Chill', value: null, type: 'Godly', image: '' },
+        { name: 'Pumpking', value: null, type: 'Godly', image: '' },
+        { name: 'Eternal 3', value: null, type: 'Godly', image: '' },
+        { name: 'Eternal 4', value: null, type: 'Godly', image: '' },
+        { name: 'Hollows Blade', value: null, type: 'Godly', image: '' },
+        { name: 'Ice Shard', value: null, type: 'Godly', image: '' },
+        { name: 'Winters Edge', value: null, type: 'Godly', image: '' },
+        { name: 'Handsaw', value: null, type: 'Godly', image: '' },
+        { name: 'Ice Dragon', value: null, type: 'Godly', image: '' },
+        { name: 'Saw', value: null, type: 'Godly', image: '' },
+        { name: 'Eternal 2', value: null, type: 'Godly', image: '' },
+        { name: 'Boneblade', value: null, type: 'Godly', image: '' },
+        { name: 'Frostbite', value: null, type: 'Godly', image: '' },
+        { name: 'Ghostblade', value: null, type: 'Godly', image: '' },
+        { name: 'Flames', value: null, type: 'Godly', image: '' },
+        { name: 'Cookieblade', value: null, type: 'Godly', image: '' },
+        { name: 'Peppermint', value: null, type: 'Godly', image: '' },
+        { name: 'Seer', value: null, type: 'Godly', image: '' },
+        { name: 'Blue Seer', value: null, type: 'Godly', image: '' },
+        { name: 'Purple Seer', value: null, type: 'Godly', image: '' },
+        { name: 'Red Seer', value: null, type: 'Godly', image: '' },
+        { name: 'Snowflake', value: null, type: 'Godly', image: '' },
+        { name: 'Orange Seer', value: null, type: 'Godly', image: '' },
+        { name: 'Yellow Seer', value: null, type: 'Godly', image: '' }
+
+        /*
+          Keep the rest of your original Chroma and Ancient items
+          here exactly as they were.
+        */
+      ];
+
+      const $ = id => document.getElementById(id);
+
+      let items = loadItems();
+      let recognition = null;
+      let listening = false;
+      let editingName = null;
+
+      function loadItems() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+
+          if (saved) {
+            const parsed = JSON.parse(saved);
+
+            if (Array.isArray(parsed)) {
+              return parsed;
+            }
+          }
+        } catch (error) {
+          console.warn('Could not load saved items.', error);
+        }
+
+        return starterItems.map(item => ({ ...item }));
+      }
+
+      function saveItems() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+          $('status').textContent = 'List saved in this browser.';
+        } catch (error) {
+          $('status').textContent =
+            'Could not save locally in this browser.';
+        }
+      }
+
+      function normalize(text) {
+        return String(text || '')
+          .toLowerCase()
+          .replace(/[^a-z0-9 ]/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>'"]/g, character => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          "'": '&#39;',
+          '"': '&quot;'
+        }[character]));
+      }
+
+      function resetSearch() {
+        $('searchInput').value = '';
+        $('typeFilter').value = 'all';
+        renderItems();
+
+        $('status').textContent = listening
+          ? 'Listening… say an item name or “reset”.'
+          : 'Showing all items.';
+      }
+
+      function handleVoiceCommand(transcript) {
+        const command = normalize(transcript);
+
+        if (!command) {
+          return;
+        }
+
+        if (
+          [
+            'reset',
+            'show all',
+            'show everything',
+            'clear',
+            'all items',
+            'reset list'
+          ].includes(command)
+        ) {
+          resetSearch();
+          return;
+        }
+
+        if (
+          [
+            'stop listening',
+            'stop microphone',
+            'stop'
+          ].includes(command)
+        ) {
+          stopVoice();
+          return;
+        }
+
+        const exact = items.find(
+          item => normalize(item.name) === command
+        );
+
+        const contained = items
+          .filter(item => command.includes(normalize(item.name)))
+          .sort((a, b) => b.name.length - a.name.length)[0];
+
+        const match = exact || contained;
+
+        $('searchInput').value = match
+          ? match.name
+          : transcript.trim();
+
+        $('typeFilter').value = 'all';
+        renderItems();
+
+        $('status').textContent = match
+          ? 'Showing: ' + match.name
+          : 'Searching for: ' + transcript.trim();
+      }
+
+      function renderItems() {
+        const query = normalize($('searchInput').value);
+        const type = $('typeFilter').value;
+
+        const filtered = items
+          .filter(item =>
+            (!query || normalize(item.name).includes(query)) &&
+            (type === 'all' || item.type === type)
+          )
+          .sort((a, b) => a.name.localeCompare(b.name));
+
+        $('count').textContent =
+          filtered.length +
+          ' item' +
+          (filtered.length === 1 ? '' : 's');
+
+        const container = $('items');
+        container.replaceChildren();
+
+        if (!filtered.length) {
+          const message = document.createElement('p');
+          message.className = 'empty-state';
+          message.textContent =
+            'No matching items. Try another name or say “reset”.';
+
+          container.appendChild(message);
+          return;
+        }
+
+        filtered.forEach(item => {
+          const card = document.createElement('article');
+          card.className = 'item-card';
+
+          const heading = document.createElement('h2');
+          heading.textContent = item.name;
+          card.appendChild(heading);
+
+          if (item.image) {
+            const image = document.createElement('img');
+
+            image.src = item.image;
+            image.alt = item.name;
+            image.loading = 'lazy';
+
+            image.onerror = () => image.remove();
+
+            card.appendChild(image);
+          }
+
+          const typeBadge = document.createElement('span');
+          typeBadge.className = 'item-type';
+          typeBadge.textContent = item.type || 'Other';
+          card.appendChild(typeBadge);
+
+          const category = document.createElement('p');
+          category.className = 'item-meta';
+          category.innerHTML =
+            '<span>Type</span><strong>' +
+            escapeHtml(item.type || 'Other') +
+            '</strong>';
+
+          const value = document.createElement('p');
+          value.className = 'item-meta';
+
+          const displayValue =
+            item.value === null ||
+            item.value === '' ||
+            !Number.isFinite(Number(item.value))
+              ? 'Not entered'
+              : Number(item.value).toLocaleString();
+
+          value.innerHTML =
+            '<span>Value</span><strong class="item-value">' +
+            escapeHtml(displayValue) +
+            '</strong>';
+
+          card.append(category, value);
+
+          const actions = document.createElement('div');
+          actions.className = 'card-actions';
+
+          const edit = document.createElement('button');
+          edit.type = 'button';
+          edit.textContent = 'Edit';
+          edit.addEventListener('click', () => openDialog(item));
+
+          const remove = document.createElement('button');
+          remove.type = 'button';
+          remove.className = 'remove-button';
+          remove.textContent = 'Remove';
+
+          remove.addEventListener('click', () => {
+            if (confirm('Remove ' + item.name + '?')) {
+              items = items.filter(
+                entry => entry.name !== item.name
+              );
+
+              saveItems();
+              renderItems();
+            }
+          });
+
+          actions.append(edit, remove);
+          card.appendChild(actions);
+          container.appendChild(card);
+        });
+      }
+
+      function openDialog(item = null) {
+        editingName = item ? item.name : null;
+
+        $('dialogTitle').textContent = item
+          ? 'Edit item'
+          : 'Add item';
+
+        $('itemName').value = item ? item.name : '';
+
+        $('itemValue').value =
+          item && item.value != null
+            ? item.value
+            : '';
+
+        $('itemType').value = item
+          ? item.type || 'Other'
+          : 'Godly';
+
+        $('itemImage').value = item
+          ? item.image || ''
+          : '';
+
+        $('itemDialog').showModal();
+      }
+
+      function startVoice() {
+        const SpeechRecognition =
+          window.SpeechRecognition ||
+          window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+          $('status').textContent =
+            'Speech recognition is not supported in this browser. Try a supported version of Chrome.';
+          return;
+        }
+
+        if (recognition) {
+          try {
+            recognition.start();
+            return;
+          } catch (error) {}
+        }
+
+        recognition = new SpeechRecognition();
+
+        recognition.lang = 'en-US';
+        recognition.continuous = true;
+        recognition.interimResults = false;
+
+        recognition.onstart = () => {
+          listening = true;
+          $('micButton').textContent = 'Stop voice';
+          $('status').textContent =
+            'Listening… say a weapon name, “reset”, or “show all”.';
+        };
+
+        recognition.onresult = event => {
+          const result =
+            event.results[event.results.length - 1][0]
+              .transcript
+              .trim();
+
+          handleVoiceCommand(result);
+        };
+
+        recognition.onerror = event => {
+          $('status').textContent =
+            event.error === 'not-allowed'
+              ? 'Microphone permission denied. Allow microphone access in browser settings.'
+              : 'Voice recognition error: ' + event.error;
+        };
+
+        recognition.onend = () => {
+          if (listening) {
+            try {
+              recognition.start();
+            } catch (error) {}
+          } else {
+            $('micButton').textContent = 'Start voice';
+          }
+        };
+
+        try {
+          recognition.start();
+        } catch (error) {
+          $('status').textContent =
+            'Could not start voice recognition. Try again.';
+        }
+      }
+
+      function stopVoice() {
+        listening = false;
+
+        if (recognition) {
+          try {
+            recognition.stop();
+          } catch (error) {}
+        }
+
+        $('micButton').textContent = 'Start voice';
+        $('status').textContent = 'Voice is off.';
+      }
+
+      $('micButton').addEventListener('click', () => {
+        listening ? stopVoice() : startVoice();
+      });
+
+      $('resetButton').addEventListener('click', resetSearch);
+
+      $('searchInput').addEventListener('input', renderItems);
+
+      $('typeFilter').addEventListener('change', renderItems);
+
+      $('addButton').addEventListener('click', () => {
+        openDialog();
+      });
+
+      $('cancelButton').addEventListener('click', () => {
+        $('itemDialog').close();
+      });
+
+      $('itemForm').addEventListener('submit', event => {
+        event.preventDefault();
+
+        const name = $('itemName').value.trim();
+        const valueText = $('itemValue').value.trim();
+
+        const item = {
+          name,
+          value: valueText === '' ? null : Number(valueText),
+          type: $('itemType').value,
+          image: $('itemImage').value.trim()
+        };
+
+        if (
+          !name ||
+          (
+            item.value !== null &&
+            (
+              !Number.isFinite(item.value) ||
+              item.value < 0
+            )
+          )
+        ) {
+          return;
+        }
+
+        const duplicate = items.find(
+          existing =>
+            normalize(existing.name) === normalize(name)
+        );
+
+        if (
+          duplicate &&
+          normalize(name) !== normalize(editingName || '')
+        ) {
+          if (
+            !confirm(
+              'An item with that name exists. Replace it?'
+            )
+          ) {
+            return;
+          }
+        }
+
+        items = items.filter(
+          existing =>
+            normalize(existing.name) !==
+              normalize(editingName || '') &&
+            normalize(existing.name) !== normalize(name)
+        );
+
+        items.push(item);
+
+        saveItems();
+
+        $('itemDialog').close();
+        $('searchInput').value = '';
+
+        renderItems();
+      });
+
+      $('exportButton').addEventListener('click', () => {
+        const blob = new Blob(
+          [JSON.stringify(items, null, 2)],
+          { type: 'application/json' }
+        );
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+
+        link.href = url;
+        link.download = 'mm2-values.json';
+        link.click();
+
+        URL.revokeObjectURL(url);
+      });
+
+      $('importInput').addEventListener(
+        'change',
+        async event => {
+          const file =
+            event.target.files &&
+            event.target.files[0];
+
+          if (!file) {
+            return;
+          }
+
+          try {
+            const data = JSON.parse(await file.text());
+
+            if (
+              !Array.isArray(data) ||
+              !data.every(
+                item =>
+                  item &&
+                  typeof item.name === 'string'
+              )
+            ) {
+              throw new Error('Invalid format');
+            }
+
+            items = data
+              .map(item => ({
+                name: item.name.trim(),
+                value:
+                  item.value === '' ||
+                  item.value == null
+                    ? null
+                    : Number(item.value),
+                type: item.type || 'Other',
+                image: item.image || ''
+              }))
+              .filter(item => item.name);
+
+            saveItems();
+            renderItems();
+
+            $('status').textContent =
+              'Imported ' + items.length + ' items.';
+          } catch (error) {
+            alert(
+              'Could not import that file. Choose a JSON array containing item names and optional values, types, and image URLs.'
+            );
+          }
+
+          event.target.value = '';
+        }
+      );
+
+      renderItems();
+    })();
+  </script>
+</body>
+</html>
