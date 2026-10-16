@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f4f6">
+  <title>MM2 Voice Values</title>
+  <style>
+    :root {
+      --background: #f3f4f6;
+      --surface: #ffffff;
+      --surface-dark: #111827;
+      --border: #d1d5db;
+      --text: #111827;
+      --muted: #6b7280;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #15803d;
+      --red: #dc2626;
+      --ad: #e5e7eb;
+      --shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    a:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.3);
+      outline-offset: 2px;
+    }
+
+    .page-layout {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 150px;
+      gap: 18px;
+      width: min(1280px, calc(100% - 32px));
+      margin: 22px auto;
+    }
+
+    .main-content {
+      min-width: 0;
+    }
+
+    .ad-column {
+      min-width: 0;
+    }
+
+    .page-intro,
+    .controls,
+    .item-card,
+    .empty-state {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .page-intro {
+      padding: 23px;
+    }
+
+    .page-intro h1 {
+      margin: 0 0 9px;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+    }
+
+    .page-intro p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .ad-box {
+      display: flex;
+      min-height: 90px;
+      align-items: center;
+      justify-content: center;
+      margin: 18px 0;
+      padding: 14px;
+      border: 1px dashed #9ca3af;
+      border-radius: 6px;
+      color: #6b7280;
+      background: var(--ad);
+      text-align: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .side-ad {
+      position: sticky;
+      top: 18px;
+      min-height: 250px;
+      margin: 0 0 18px;
+    }
+
+    .side-ad + .side-ad {
+      top: 285px;
+    }
+
+    .controls {
+      padding: 17px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    button,
+    .file-label {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 13px;
+      border: 1px solid var(--blue);
+      border-radius: 5px;
+      color: white;
+      background: var(--blue);
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.15s ease;
+    }
+
+    button:hover,
+    .file-label:hover {
+      border-color: var(--blue-dark);
+      background: var(--blue-dark);
+    }
+
+    #micButton {
+      border-color: #16a34a;
+      background: #16a34a;
+    }
+
+    #micButton:hover {
+      border-color: #15803d;
+      background: #15803d;
+    }
+
+    #micButton.is-listening {
+      border-color: #b91c1c;
+      background: #dc2626;
+    }
+
+    #resetButton,
+    #cancelButton {
+      border-color: #6b7280;
+      color: #1f2937;
+      background: #f9fafb;
+    }
+
+    #resetButton:hover,
+    #cancelButton:hover {
+      background: #e5e7eb;
+    }
+
+    #exportButton {
+      border-color: #15803d;
+      background: #15803d;
+    }
+
+    #exportButton:hover {
+      background: #166534;
+    }
+
+    #importInput {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .search-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 12px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .form-field label {
+      color: #374151;
+      font-size: 0.83rem;
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 42px;
+      padding: 0 11px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text);
+      background: white;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+    }
+
+    #status {
+      min-height: 20px;
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    #count {
+      margin: 20px 0 11px;
+      color: #374151;
+      font-weight: bold;
+    }
+
+    #items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 12px;
+    }
+
+    .item-card {
+      overflow: hidden;
+    }
+
+    .item-image-box {
+      display: flex;
+      height: 115px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      background: #f9fafb;
+    }
+
+    .item-image {
+      max-width: 100%;
+      max-height: 95px;
+      object-fit: contain;
+    }
+
+    .item-image-placeholder {
+      color: #9ca3af;
+      font-size: 0.82rem;
+    }
+
+    .item-content {
+      padding: 13px;
+    }
+
+    .item-card h2 {
+      margin: 0 0 9px;
+      font-size: 1rem;
+    }
+
+    .item-type {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 7px;
+      border-radius: 4px;
+      color: #1e40af;
+      background: #dbeafe;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+
+    .item-detail {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 6px 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .item-value {
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .card-actions button {
+      flex: 1;
+      min-height: 34px;
+      padding: 0 6px;
+      font-size: 0.77rem;
+    }
+
+    .card-actions .remove-button {
+      border-color: var(--red);
+      color: var(--red);
+      background: white;
+    }
+
+    .card-actions .remove-button:hover {
+      color: white;
+      background: var(--red);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 35px 20px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .voice-bubble {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 20;
+      display: grid;
+      width: 68px;
+      height: 68px;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      color: white;
+      background: #9ca3af;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition:
+        width 0.2s ease,
+        height 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .voice-bubble:hover {
+      transform: scale(1.05);
+    }
+
+    .voice-bubble.is-listening {
+      width: 86px;
+      height: 86px;
+      background: #16a34a;
+      animation: listeningPulse 1.2s infinite ease-in-out;
+    }
+
+    .voice-bubble::before,
+    .voice-bubble::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .voice-bubble.is-listening::before {
+      border-color: rgba(22, 163, 74, 0.32);
+      animation: listeningRing 1.4s infinite ease-out;
+    }
+
+    .voice-bubble.is-listening::after {
+      border-color: rgba(22, 163, 74, 0.18);
+      animation: listeningRing 1.4s 0.45s infinite ease-out;
+    }
+
+    .voice-icon {
+      position: relative;
+      width: 18px;
+      height: 30px;
+      border: 3px solid currentColor;
+      border-radius: 10px;
+    }
+
+    .voice-icon::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -12px;
+      width: 22px;
+      height: 14px;
+      border: 3px solid currentColor;
+      border-top: 0;
+      border-radius: 0 0 14px 14px;
+      transform: translateX(-50%);
+    }
+
+    .voice-icon::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -19px;
+      width: 3px;
+      height: 8px;
+      background: currentColor;
+      transform: translateX(-50%);
+    }
+
+    @keyframes listeningPulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes listeningRing {
+      0% {
+        opacity: 0.8;
+        transform: scale(0.85);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(1.35);
+      }
+    }
+
+    .site-footer {
+      margin-top: 36px;
+      padding: 30px 16px;
+      color: #d1d5db;
+      background: var(--surface-dark);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 24px;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .footer-column h2,
+    .footer-column h3 {
+      margin: 0 0 10px;
+      color: white;
+    }
+
+    .footer-column p {
+      margin: 0;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .footer-column a {
+      display: block;
+      margin: 7px 0;
+      color: #93c5fd;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom {
+      width: min(1180px, calc(100% - 32px));
+      margin: 25px auto 0;
+      padding-top: 15px;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    dialog {
+      width: min(460px, calc(100% - 28px));
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      background: var(--surface);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    dialog::backdrop {
+      background: rgba(17, 24, 39, 0.55);
+    }
+
+    #itemForm {
+      padding: 24px;
+    }
+
+    #itemForm h2 {
+      margin: 0 0 20px;
+    }
+
+    #itemForm p {
+      margin: 15px 0;
+    }
+
+    #itemForm label {
+      display: block;
+      color: #374151;
+      font-weight: bold;
+    }
+
+    #itemForm input,
+    #itemForm select {
+      margin-top: 7px;
+    }
+
+    .dialog-actions {
+      display: flex;
+      gap: 9px;
+      margin-top: 20px;
+    }
+
+    .dialog-actions button {
+      flex: 1;
+    }
+
+    @media (max-width: 980px) {
+      .page-layout {
+        grid-template-columns: 110px minmax(0, 1fr) 110px;
+        gap: 12px;
+        width: min(100% - 20px, 1280px);
+      }
+
+      .side-ad {
+        min-height: 180px;
+        font-size: 0.7rem;
+      }
+
+      .side-ad + .side-ad {
+        top: 210px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: min(100% - 20px, 700px);
+      }
+
+      .main-content {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      .left-ads {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .right-ads {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .side-ad,
+      .side-ad + .side-ad {
+        position: static;
+        min-height: 90px;
+        margin: 12px 0 0;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .page-layout {
+        width: min(100% - 20px, 700px);
+      }
+
+      .page-intro,
+      .controls {
+        padding: 16px;
+      }
+
+      .search-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button-row button,
+      .button-row .file-label {
+        flex: 1 1 calc(50% - 8px);
+      }
+
+      #items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+      }
+
+      .item-content {
+        padding: 10px;
+      }
+
+      .item-image-box {
+        height: 100px;
+      }
+
+      .item-card h2 {
+        font-size: 0.9rem;
+      }
+
+      .item-detail {
+        display: block;
+        line-height: 1.5;
+      }
+
+      .voice-bubble {
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-layout {
+        display: block;
+        width: min(100% - 20px, 1180px);
+      }
+
+      .main-content {
+        width: 100%;
+      }
+
+      .ad-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .left-ads,
+      .right-ads {
+        margin-top: 10px;
+      }
+
+      .side-ad,
+      .side-ad + .side-ad {
+        min-height: 75px;
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 390px) {
+      #items {
+        grid-template-columns: 1fr;
+      }
+
+      .button-row button,
+      .button-row .file-label {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="page-layout">
+    <aside class="ad-column left-ads" aria-label="Left advertisements">
+      <div class="ad-box side-ad">
+        Advertisement
+      </div>
+  <div class="ad-box side-ad">
+    Advertisement
+  </div>
+</aside>
+
+<main class="main-content">
+  <section class="page-intro">
+    <h1>MM2 Voice Values</h1>
+
+    <p>
+      Search for an item or keep voice search active while you
+      say weapon names. Recognized text is placed into the search box.
+    </p>
+  </section>
+
+  <div class="ad-box">
+    Advertisement
+  </div>
+
+  <section class="controls" aria-label="Controls">
+    <div class="button-row">
+      <button id="micButton" type="button">
+        Start voice
+      </button>
+
+      <button id="resetButton" type="button">
+        Reset / Show all
+      </button>
+
+      <button id="addButton" type="button">
+        Add item
+      </button>
+
+      <button id="exportButton" type="button">
+        Export list
+      </button>
+
+      <label class="file-label" for="importInput">
+        Import list
+      </label>
+
+      <input
+        id="importInput"
+        type="file"
+        accept="application/json,.json"
+      >
+    </div>
+
+    <div class="search-grid">
+      <div class="form-field">
+        <label for="searchInput">
+          Search for an item
+        </label>
+
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Weapon name..."
+          autocomplete="off"
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="typeFilter">
+          Filter by type
+        </label>
+
+        <select id="typeFilter">
+          <option value="all">All types</option>
+          <option>Ancient</option>
+          <option>Godly</option>
+          <option>Chroma</option>
+          <option>Vintage</option>
+          <option>Legendary</option>
+          <option>Rare</option>
+          <option>Uncommon</option>
+          <option>Common</option>
+          <option>Pet</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <p id="status" aria-live="polite">
+      Voice is off.
+    </p>
+  </section>
+
+  <p id="count">0 items</p>
+  <div id="items"></div>
+</main>
+
+<aside class="ad-column right-ads" aria-label="Right advertisements">
+  <div class="ad-box side-ad">
+    Advertisement
+  </div>
+
+  <div class="ad-box side-ad">
+    Advertisement
+  </div>
+</aside>
+
+  </div>
+  <dialog id="itemDialog">
+    <form id="itemForm">
+      <h2 id="dialogTitle">Add item</h2>
+  <p>
+    <label>
+      Name
+      <input id="itemName" required maxlength="100">
+    </label>
+  </p>
+
+  <p>
+    <label>
+      Value
+      <input
+        id="itemValue"
+        type="number"
+        min="0"
+        step="any"
+        placeholder="Leave blank if unknown"
+      >
+    </label>
+  </p>
+
+  <p>
+    <label>
+      Type
+      <select id="itemType">
+        <option>Godly</option>
+        <option>Ancient</option>
+        <option>Chroma</option>
+        <option>Vintage</option>
+        <option>Legendary</option>
+        <option>Rare</option>
+        <option>Uncommon</option>
+        <option>Common</option>
+        <option>Pet</option>
+        <option>Other</option>
+      </select>
+    </label>
+  </p>
+
+  <p>
+    <label>
+      Image URL
+      <input
+        id="itemImage"
+        type="url"
+        placeholder="https://..."
+      >
+    </label>
+  </p>
+
+  <div class="dialog-actions">
+    <button type="submit">
+      Save
+    </button>
+
+    <button id="cancelButton" type="button">
+      Cancel
+    </button>
+  </div>
+</form>
+
+  </dialog>
+<button
+id="voiceBubble"
+class="voice-bubble"
+type="button"
+aria-label="Start voice search"
+title="Start voice search"
+
+
+<span class="voice-icon"></span>
+
+  </button>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <section class="footer-column">
+        <h2>MM2 Voice Values</h2>
+    <p>
+      A simple Murder Mystery 2 item value tool with search,
+      voice recognition, importing, exporting, and custom items.
+    </p>
+  </section>
+
+  <section class="footer-column">
+    <h3>Information</h3>
+
+    <a
+      href="https://www.mm2values.com/"
+      target="_blank"
+      rel="noopener"
+    >
+      Check current MM2 values
+    </a>
+
+    <a
+      href="https://www.roblox.com/"
+      target="_blank"
+      rel="noopener"
+    >
+      Roblox
+    </a>
+
+    <a href="#top">
+      Back to top
+    </a>
+  </section>
+
+  <section class="footer-column">
+    <h3>CiphAnon Studios</h3>
+
+    <p>
+      Explore more projects, tools, and websites from
+      CiphAnon Studios.
+    </p>
+
+    <a
+      href="https://www.ciphanonstudios.com/"
+      target="_blank"
+      rel="noopener"
+    >
+      Visit my studio page
+    </a>
+  </section>
+</div>
+
+<div class="footer-bottom">
+  Values are not automatically verified or live-synced with
+  MM2Values. Changes are saved in your browser.
+</div>
+
+  </footer>
+  <script>
+    (() => {
+      'use strict';
+
+      const STORAGE_KEY =
+        'mm2VoiceValues.simple.v1';
+
+      const starterItems = [
+        { name: 'Travelers Gun', value: null, type: 'Godly', image: '' },
+        { name: 'Evergun', value: null, type: 'Godly', image: '' },
+        { name: 'Constellation', value: null, type: 'Godly', image: '' },
+        { name: 'Evergreen', value: null, type: 'Godly', image: '' },
+        { name: 'Turkey', value: null, type: 'Godly', image: '' },
+        { name: 'Vampires Gun', value: null, type: 'Godly', image: '' },
+        { name: 'Alienbeam', value: null, type: 'Godly', image: '' },
+        { name: 'Darkshot', value: null, type: 'Godly', image: '' },
+        { name: 'Darksword', value: null, type: 'Godly', image: '' },
+        { name: 'Blossom', value: null, type: 'Godly', image: '' },
+        { name: 'Sakura', value: null, type: 'Godly', image: '' },
+        { name: 'Raygun', value: null, type: 'Godly', image: '' },
+        { name: 'Bauble', value: null, type: 'Godly', image: '' },
+        { name: 'Snowcannon', value: null, type: 'Godly', image: '' },
+        { name: 'Sunrise', value: null, type: 'Godly', image: '' },
+        { name: 'Soul', value: null, type: 'Godly', image: '' },
+        { name: 'Rainbow Gun', value: null, type: 'Godly', image: '' },
+        { name: 'Spirit', value: null, type: 'Godly', image: '' },
+        { name: 'Flora', value: null, type: 'Godly', image: '' },
+        { name: 'Rainbow', value: null, type: 'Godly', image: '' },
+        { name: 'Bloom', value: null, type: 'Godly', image: '' },
+        { name: 'Sunset', value: null, type: 'Godly', image: '' },
+        { name: 'Treat', value: null, type: 'Godly', image: '' },
+        { name: 'Flowerwood Gun', value: null, type: 'Godly', image: '' },
+        { name: 'Sweet', value: null, type: 'Godly', image: '' },
+        { name: 'Flowerwood Knife', value: null, type: 'Godly', image: '' },
+        { name: 'Xenoknife', value: null, type: 'Godly', image: '' },
+        { name: 'Bat', value: null, type: 'Godly', image: '' },
+        { name: 'Snow Dagger', value: null, type: 'Godly', image: '' },
+        { name: 'Ocean', value: null, type: 'Godly', image: '' },
+        { name: 'Flowerwood', value: null, type: 'Godly', image: '' },
+        { name: 'Xenoshot', value: null, type: 'Godly', image: '' },
+        { name: 'Blizzard', value: null, type: 'Godly', image: '' },
+        { name: 'Snowstorm', value: null, type: 'Godly', image: '' },
+        { name: 'Waves', value: null, type: 'Godly', image: '' },
+        { name: 'Watergun', value: null, type: 'Godly', image: '' },
+        { name: 'Candy', value: null, type: 'Godly', image: '' },
+        { name: 'Borealis', value: null, type: 'Godly', image: '' },
+        { name: 'Australis', value: null, type: 'Godly', image: '' },
+        { name: 'Iceblaster', value: null, type: 'Godly', image: '' },
+        { name: 'Elderwood Blade', value: null, type: 'Godly', image: '' },
+        { name: 'Pearlshine', value: null, type: 'Godly', image: '' },
+        { name: 'Darkbringer', value: null, type: 'Godly', image: '' },
+        { name: 'Candleflame', value: null, type: 'Godly', image: '' },
+        { name: 'Lugar', value: null, type: 'Godly', image: '' },
+        { name: 'Red Lugar', value: null, type: 'Godly', image: '' },
+        { name: 'Spectre', value: null, type: 'Godly', image: '' },
+        { name: 'Sugar', value: null, type: 'Godly', image: '' },
+        { name: 'Lightbringer', value: null, type: 'Godly', image: '' },
+        { name: 'Elderwood Revolver', value: null, type: 'Godly', image: '' },
+        { name: 'Ornament', value: null, type: 'Godly', image: '' },
+        { name: 'Chroma Gemstone', value: null, type: 'Godly', image: '' },
+        { name: 'Swirly Gun', value: null, type: 'Godly', image: '' },
+        { name: 'Green Lugar', value: null, type: 'Godly', image: '' },
+        { name: 'Laser', value: null, type: 'Godly', image: '' },
+        { name: 'Amerilaser', value: null, type: 'Godly', image: '' },
+        { name: 'Plasmabeam', value: null, type: 'Godly', image: '' },
+        { name: 'Plasmablade', value: null, type: 'Godly', image: '' },
+        { name: 'Hollowgun', value: null, type: 'Godly', image: '' },
+        { name: 'Icebeam', value: null, type: 'Godly', image: '' },
+        { name: 'Iceflake', value: null, type: 'Godly', image: '' },
+        { name: 'Gingermint', value: null, type: 'Godly', image: '' },
+        { name: 'Shark', value: null, type: 'Godly', image: '' },
+        { name: 'Nightblade', value: null, type: 'Godly', image: '' },
+        { name: 'Virtual', value: null, type: 'Godly', image: '' },
+        { name: 'Blaster', value: null, type: 'Godly', image: '' },
+        { name: 'Old Glory', value: null, type: 'Godly', image: '' },
+        { name: 'Ginger Lugar', value: null, type: 'Godly', image: '' },
+        { name: 'Swirly Blade', value: null, type: 'Godly', image: '' },
+        { name: 'Eternalcane', value: null, type: 'Godly', image: '' },
+        { name: 'Lugarcane', value: null, type: 'Godly', image: '' },
+        { name: 'Slasher', value: null, type: 'Godly', image: '' },
+        { name: 'Cookiecane', value: null, type: 'Godly', image: '' },
+        { name: 'Jinglegun', value: null, type: 'Godly', image: '' },
+        { name: 'Gemstone', value: null, type: 'Godly', image: '' },
+        { name: 'Gingerblade', value: null, type: 'Godly', image: '' },
+        { name: 'Battle Axe 2', value: null, type: 'Godly', image: '' },
+        { name: 'Battle Axe', value: null, type: 'Godly', image: '' },
+        { name: 'Minty', value: null, type: 'Godly', image: '' },
+        { name: 'Deathshard', value: null, type: 'Godly', image: '' },
+        { name: 'Bioblade', value: null, type: 'Godly', image: '' },
+        { name: 'Clockwork', value: null, type: 'Godly', image: '' },
+        { name: 'Nebula', value: null, type: 'Godly', image: '' },
+        { name: 'Xmas', value: null, type: 'Godly', image: '' },
+        { name: 'Vampires Edge', value: null, type: 'Godly', image: '' },
+        { name: 'Frostsaber', value: null, type: 'Godly', image: '' },
+        { name: 'Fang', value: null, type: 'Godly', image: '' },
+        { name: 'Spider', value: null, type: 'Godly', image: '' },
+        { name: 'Heat', value: null, type: 'Godly', image: '' },
+        { name: 'Tides', value: null, type: 'Godly', image: '' },
+        { name: 'Hollows Edge', value: null, type: 'Godly', image: '' },
+        { name: 'Chill', value: null, type: 'Godly', image: '' },
+        { name: 'Pumpking', value: null, type: 'Godly', image: '' },
+        { name: 'Eternal 3', value: null, type: 'Godly', image: '' },
+        { name: 'Eternal 4', value: null, type: 'Godly', image: '' },
+        { name: 'Hollows Blade', value: null, type: 'Godly', image: '' },
+        { name: 'Ice Shard', value: null, type: 'Godly', image: '' },
+        { name: 'Winters Edge', value: null, type: 'Godly', image: '' },
+        { name: 'Handsaw', value: null, type: 'Godly', image: '' },
+        { name: 'Ice Dragon', value: null, type: 'Godly', image: '' },
+        { name: 'Saw', value: null, type: 'Godly', image: '' },
+        { name: 'Eternal 2', value: null, type: 'Godly', image: '' },
+        { name: 'Boneblade', value: null, type: 'Godly', image: '' },
+        { name: 'Frostbite', value: null, type: 'Godly', image: '' },
+        { name: 'Ghostblade', value: null, type: 'Godly', image: '' },
+        { name: 'Flames', value: null, type: 'Godly', image: '' },
+        { name: 'Cookieblade', value: null, type: 'Godly', image: '' },
+        { name: 'Peppermint', value: null, type: 'Godly', image: '' },
+        { name: 'Seer', value: null, type: 'Godly', image: '' },
+        { name: 'Blue Seer', value: null, type: 'Godly', image: '' },
+        { name: 'Purple Seer', value: null, type: 'Godly', image: '' },
+        { name: 'Red Seer', value: null, type: 'Godly', image: '' },
+        { name: 'Snowflake', value: null, type: 'Godly', image: '' },
+        { name: 'Orange Seer', value: null, type: 'Godly', image: '' },
+        { name: 'Yellow Seer', value: null, type: 'Godly', image: '' },
+
+        { name: 'Chroma Bauble', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Travelers Gun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Evergun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Constellation', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Evergreen', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Turkey', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Vampires Gun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Alienbeam', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Darkshot', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Darksword', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Blossom', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Sakura', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Raygun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Snowcannon', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Sunrise', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Soul', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Rainbow Gun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Spirit', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Flora', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Rainbow', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Bloom', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Sunset', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Treat', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Flowerwood Gun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Sweet', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Flowerwood Knife', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Xenoknife', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Bat', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Snow Dagger', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ocean', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Flowerwood', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Xenoshot', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Blizzard', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Snowstorm', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Waves', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Watergun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Candy', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Borealis', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Australis', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Iceblaster', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Elderwood Blade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Pearlshine', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Darkbringer', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Candleflame', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Lugar', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Red Lugar', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Spectre', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Sugar', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Lightbringer', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Elderwood Revolver', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ornament', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Gemstone', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Swirly Gun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Green Lugar', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Laser', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Amerilaser', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Plasmabeam', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Plasmablade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Hollowgun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma cebeam', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Iceflake', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Gingermint', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Shark', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Nightblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Virtual', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Blaster', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Old Glory', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ginger Lugar', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Swirly Blade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Eternalcane', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Lugarcane', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Slasher', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Cookiecane', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Jinglegun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Gingerblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Battle Axe 2', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Battle Axe', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Minty', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Deathshard', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Bioblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Clockwork', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Nebula', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Xmas', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Vampires Edge', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Frostsaber', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Fang', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Spider', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Heat', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Tides', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Hollows Edge', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Chill', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Pumpking', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Eternal 3', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Eternal 4', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Hollows Blade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ice Shard', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Winters Edge', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Handsaw', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ice Dragon', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Saw', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Eternal 2', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Boneblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Frostbite', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ghostblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Flames', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Cookieblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Peppermint', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Seer', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Snowflake', value: null, type: 'Chroma', image: '' }
+      ];
+
+      const $ = id => document.getElementById(id);
+
+      let items = loadItems();
+      let recognition = null;
+      let listening = false;
+      let restarting = false;
+      let restartTimer = null;
+      let lastTranscript = '';
+      let lastTranscriptTime = 0;
+      let editingName = null;
+
+      function loadItems() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+
+          if (saved) {
+            const parsed = JSON.parse(saved);
+
+            if (Array.isArray(parsed)) {
+              return parsed
+                .map(item => ({
+                  name: String(item.name || '').trim(),
+                  value:
+                    item.value === '' ||
+                    item.value == null
+                      ? null
+                      : Number(item.value),
+                  type: item.type || 'Other',
+                  image: item.image || ''
+                }))
+                .filter(item => item.name);
+            }
+          }
+        } catch (error) {
+          console.warn('Could not load saved items.', error);
+        }
+
+        return starterItems.map(item => ({ ...item }));
+      }
+
+      function saveItems() {
+        try {
+          localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(items)
+          );
+
+          if (!listening) {
+            $('status').textContent =
+              'List saved in this browser.';
+          }
+        } catch (error) {
+          $('status').textContent =
+            'Could not save locally in this browser.';
+        }
+      }
+
+      function normalize(text) {
+        return String(text || '')
+          .toLowerCase()
+          .replace(/[’']/g, '')
+          .replace(/[^a-z0-9 ]/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function compact(text) {
+        return normalize(text).replace(/\s/g, '');
+      }
+
+      function normalizeSpeech(text) {
+        return normalize(text)
+          .replace(/\btravelers?\b/g, 'traveler')
+          .replace(/\bvampires?\b/g, 'vampire')
+          .replace(/\bhollows?\b/g, 'hollow')
+          .replace(/\bwinters?\b/g, 'winter')
+          .replace(/\bseers?\b/g, 'seer')
+          .replace(/\bknives?\b/g, 'knife')
+          .replace(/\bguns?\b/g, 'gun')
+          .replace(/\bblades?\b/g, 'blade')
+          .replace(/\bdaggers?\b/g, 'dagger')
+          .replace(/\brevolvers?\b/g, 'revolver')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function removeVoicePrefix(text) {
+        return normalizeSpeech(text)
+          .replace(
+            /^(please\s+)?(show me|find me|find|search for|search|look for|look up|open)\s+/,
+            ''
+          )
+          .trim();
+      }
+
+      function levenshtein(first, second) {
+        const matrix = Array.from(
+          { length: second.length + 1 },
+          () => Array(first.length + 1).fill(0)
+        );
+
+        for (let row = 0; row <= second.length; row++) {
+          matrix[row][0] = row;
+        }
+
+        for (let column = 0; column <= first.length; column++) {
+          matrix[0][column] = column;
+        }
+
+        for (let row = 1; row <= second.length; row++) {
+          for (let column = 1; column <= first.length; column++) {
+            const cost =
+              second[row - 1] === first[column - 1]
+                ? 0
+                : 1;
+
+            matrix[row][column] = Math.min(
+              matrix[row - 1][column] + 1,
+              matrix[row][column - 1] + 1,
+              matrix[row - 1][column - 1] + cost
+            );
+          }
+        }
+
+        return matrix[second.length][first.length];
+      }
+
+      function similarity(first, second) {
+        const longest = Math.max(
+          first.length,
+          second.length
+        );
+
+        if (!longest) {
+          return 1;
+        }
+
+        return 1 -
+          levenshtein(first, second) / longest;
+      }
+
+      function wordScore(spokenWords, itemWords) {
+        if (!spokenWords.length || !itemWords.length) {
+          return 0;
+        }
+
+        let total = 0;
+
+        for (const itemWord of itemWords) {
+          let best = 0;
+
+          for (const spokenWord of spokenWords) {
+            best = Math.max(
+              best,
+              similarity(spokenWord, itemWord)
+            );
+          }
+
+          total += best;
+        }
+
+        return total / itemWords.length;
+      }
+
+      function getWeaponMatch(transcript) {
+        const spoken = removeVoicePrefix(transcript);
+        const spokenNormal = normalizeSpeech(spoken);
+        const spokenCompact = compact(spokenNormal);
+        const spokenWords =
+          spokenNormal.split(' ').filter(Boolean);
+
+        if (!spokenNormal) {
+          return null;
+        }
+
+        const exact = items.find(item => {
+          return normalizeSpeech(item.name) === spokenNormal;
+        });
+
+        if (exact) {
+          return exact;
+        }
+
+        const compactMatch = items.find(item => {
+          return compact(normalizeSpeech(item.name)) ===
+            spokenCompact;
+        });
+
+        if (compactMatch) {
+          return compactMatch;
+        }
+
+        const contained = items
+          .filter(item => {
+            const name = normalizeSpeech(item.name);
+            const compactName = compact(name);
+
+            return (
+              spokenNormal.includes(name) ||
+              name.includes(spokenNormal) ||
+              spokenCompact.includes(compactName) ||
+              compactName.includes(spokenCompact)
+            );
+          })
+          .sort((a, b) => b.name.length - a.name.length);
+
+        if (contained.length) {
+          return contained[0];
+        }
+
+        let bestItem = null;
+        let bestScore = 0;
+
+        for (const item of items) {
+          const name = normalizeSpeech(item.name);
+          const compactName = compact(name);
+          const nameWords =
+            name.split(' ').filter(Boolean);
+
+          const score = Math.max(
+            similarity(spokenNormal, name),
+            similarity(spokenCompact, compactName),
+            wordScore(spokenWords, nameWords)
+          );
+
+          if (score > bestScore) {
+            bestScore = score;
+            bestItem = item;
+          }
+        }
+
+        const minimumScore =
+          spokenCompact.length <= 5
+            ? 0.84
+            : spokenCompact.length <= 10
+              ? 0.72
+              : 0.58;
+
+        return bestScore >= minimumScore
+          ? bestItem
+          : null;
+      }
+
+      function resetSearch() {
+        $('searchInput').value = '';
+        $('typeFilter').value = 'all';
+        renderItems();
+
+        $('status').textContent = listening
+          ? 'Listening… say an item name or “reset”.'
+          : 'Showing all items.';
+      }
+
+      function handleVoiceCommand(transcript) {
+        const spoken = removeVoicePrefix(transcript);
+        const command = normalizeSpeech(spoken);
+
+        if (!command) {
+          return;
+        }
+
+        const now = Date.now();
+
+        if (
+          command === lastTranscript &&
+          now - lastTranscriptTime < 1200
+        ) {
+          return;
+        }
+
+        lastTranscript = command;
+        lastTranscriptTime = now;
+
+        if (
+          [
+            'reset',
+            'show all',
+            'show everything',
+            'show me everything',
+            'clear',
+            'all items',
+            'reset list'
+          ].includes(command)
+        ) {
+          resetSearch();
+          return;
+        }
+
+        if (
+          [
+            'stop',
+            'stop listening',
+            'stop voice',
+            'stop microphone',
+            'turn off voice',
+            'turn off microphone'
+          ].includes(command)
+        ) {
+          stopVoice();
+          return;
+        }
+
+        const match = getWeaponMatch(spoken);
+
+        $('searchInput').value = match
+          ? match.name
+          : spoken;
+
+        $('typeFilter').value = 'all';
+        renderItems();
+
+        $('status').textContent = match
+          ? 'Showing: ' + match.name
+          : 'Searching for: ' + spoken;
+      }
+
+      function renderItems() {
+        const query = normalize(
+          $('searchInput').value
+        );
+
+        const type = $('typeFilter').value;
+
+        const filtered = items
+          .filter(item =>
+            (!query ||
+              normalize(item.name).includes(query)) &&
+            (type === 'all' || item.type === type)
+          )
+          .sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+
+        $('count').textContent =
+          filtered.length +
+          ' item' +
+          (filtered.length === 1 ? '' : 's');
+
+        const container = $('items');
+        container.replaceChildren();
+
+        if (!filtered.length) {
+          const message = document.createElement('p');
+          message.className = 'empty-state';
+          message.textContent =
+            'No matching items. Try another name or say “reset”.';
+
+          container.appendChild(message);
+          return;
+        }
+
+        filtered.forEach(item => {
+          const card = document.createElement('article');
+          card.className = 'item-card';
+
+          const imageBox = document.createElement('div');
+          imageBox.className = 'item-image-box';
+
+          if (item.image) {
+            const image = document.createElement('img');
+
+            image.className = 'item-image';
+            image.src = item.image;
+            image.alt = item.name;
+            image.loading = 'lazy';
+
+            image.onerror = () => {
+              image.remove();
+
+              const placeholder =
+                document.createElement('span');
+
+              placeholder.className =
+                'item-image-placeholder';
+
+              placeholder.textContent =
+                'Image unavailable';
+
+              imageBox.appendChild(placeholder);
+            };
+
+            imageBox.appendChild(image);
+          } else {
+            const placeholder =
+              document.createElement('span');
+
+            placeholder.className =
+              'item-image-placeholder';
+
+            placeholder.textContent = 'No image';
+
+            imageBox.appendChild(placeholder);
+          }
+
+          const content = document.createElement('div');
+          content.className = 'item-content';
+
+          const heading = document.createElement('h2');
+          heading.textContent = item.name;
+
+          const typeBadge = document.createElement('span');
+          typeBadge.className = 'item-type';
+          typeBadge.textContent = item.type || 'Other';
+
+          const typeDetail = document.createElement('p');
+          typeDetail.className = 'item-detail';
+
+          const typeLabel = document.createElement('span');
+          typeLabel.textContent = 'Type';
+
+          const typeValue = document.createElement('strong');
+          typeValue.textContent = item.type || 'Other';
+
+          typeDetail.append(typeLabel, typeValue);
+
+          const valueDetail = document.createElement('p');
+          valueDetail.className = 'item-detail';
+
+          const valueLabel = document.createElement('span');
+          valueLabel.textContent = 'Value';
+
+          const valueNumber = document.createElement('strong');
+          valueNumber.className = 'item-value';
+
+          valueNumber.textContent =
+            item.value === null ||
+            item.value === '' ||
+            !Number.isFinite(Number(item.value))
+              ? 'Not entered'
+              : Number(item.value).toLocaleString();
+
+          valueDetail.append(valueLabel, valueNumber);
+
+          const actions = document.createElement('div');
+          actions.className = 'card-actions';
+
+          const edit = document.createElement('button');
+          edit.type = 'button';
+          edit.textContent = 'Edit';
+
+          edit.addEventListener('click', () => {
+            openDialog(item);
+          });
+
+          const remove = document.createElement('button');
+          remove.type = 'button';
+          remove.className = 'remove-button';
+          remove.textContent = 'Remove';
+
+          remove.addEventListener('click', () => {
+            if (confirm('Remove ' + item.name + '?')) {
+              items = items.filter(
+                entry => entry.name !== item.name
+              );
+
+              saveItems();
+              renderItems();
+            }
+          });
+
+          actions.append(edit, remove);
+
+          content.append(
+            heading,
+            typeBadge,
+            typeDetail,
+            valueDetail,
+            actions
+          );
+
+          card.append(imageBox, content);
+          container.appendChild(card);
+        });
+      }
+
+      function openDialog(item = null) {
+        editingName = item ? item.name : null;
+
+        $('dialogTitle').textContent = item
+          ? 'Edit item'
+          : 'Add item';
+
+        $('itemName').value = item
+          ? item.name
+          : '';
+
+        $('itemValue').value =
+          item && item.value != null
+            ? item.value
+            : '';
+
+        $('itemType').value = item
+          ? item.type || 'Other'
+          : 'Godly';
+
+        $('itemImage').value = item
+          ? item.image || ''
+          : '';
+
+        $('itemDialog').showModal();
+      }
+
+      function createRecognition() {
+        const SpeechRecognition =
+          window.SpeechRecognition ||
+          window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+          return null;
+        }
+
+        const instance = new SpeechRecognition();
+
+        instance.lang = 'en-US';
+        instance.continuous = false;
+        instance.interimResults = false;
+        instance.maxAlternatives = 1;
+
+        instance.onstart = () => {
+          restarting = false;
+          listening = true;
+
+          $('micButton').classList.add('is-listening');
+          $('micButton').textContent = 'Stop voice';
+
+          $('voiceBubble').classList.add('is-listening');
+          $('voiceBubble').setAttribute(
+            'aria-label',
+            'Stop voice search'
+          );
+          $('voiceBubble').title = 'Stop voice search';
+
+          $('status').textContent =
+            'Listening… say a weapon name.';
+        };
+
+        instance.onresult = event => {
+          const result =
+            event.results[0][0].transcript.trim();
+
+          if (result) {
+            $('searchInput').value = result;
+            $('typeFilter').value = 'all';
+            renderItems();
+
+            const match = getWeaponMatch(result);
+
+            if (match) {
+              $('searchInput').value = match.name;
+              renderItems();
+              $('status').textContent =
+                'Showing: ' + match.name;
+            } else {
+              $('status').textContent =
+                'Searching for: ' + result;
+            }
+          }
+        };
+
+        instance.onerror = event => {
+          if (event.error === 'aborted') {
+            return;
+          }
+
+          if (event.error === 'no-speech') {
+            $('status').textContent =
+              'No speech detected. Still listening...';
+            return;
+          }
+
+          if (event.error === 'not-allowed') {
+            listening = false;
+            $('micButton').classList.remove(
+              'is-listening'
+            );
+            $('micButton').textContent = 'Start voice';
+
+            $('voiceBubble').classList.remove(
+              'is-listening'
+            );
+
+            $('status').textContent =
+              'Microphone permission was denied. Allow microphone access and try again.';
+            return;
+          }
+
+          if (event.error === 'audio-capture') {
+            listening = false;
+            $('status').textContent =
+              'No microphone was found. Check your microphone settings.';
+            return;
+          }
+
+          if (event.error === 'network') {
+            listening = false;
+            $('status').textContent =
+              'Voice recognition needs an internet connection in this browser.';
+            return;
+          }
+
+          $('status').textContent =
+            'Voice recognition error: ' +
+            event.error +
+            '. Still trying to listen.';
+        };
+
+        instance.onend = () => {
+          recognition = null;
+
+          if (!listening) {
+            $('micButton').classList.remove(
+              'is-listening'
+            );
+
+            $('micButton').textContent = 'Start voice';
+
+            $('voiceBubble').classList.remove(
+              'is-listening'
+            );
+
+            $('status').textContent = 'Voice is off.';
+            return;
+          }
+
+          if (restarting) {
+            return;
+          }
+
+          restarting = true;
+
+          clearTimeout(restartTimer);
+
+          restartTimer = setTimeout(() => {
+            if (!listening) {
+              restarting = false;
+              return;
+            }
+
+            startRecognitionAgain();
+          }, 250);
+        };
+
+        return instance;
+      }
+
+      function startRecognitionAgain() {
+        if (!listening) {
+          return;
+        }
+
+        recognition = createRecognition();
+
+        if (!recognition) {
+          listening = false;
+          $('status').textContent =
+            'Speech recognition is not supported in this browser.';
+          return;
+        }
+
+        try {
+          recognition.start();
+        } catch (error) {
+          recognition = null;
+          restarting = false;
+
+          clearTimeout(restartTimer);
+
+          restartTimer = setTimeout(
+            startRecognitionAgain,
+            600
+          );
+        }
+      }
+
+      function startVoice() {
+        const SpeechRecognition =
+          window.SpeechRecognition ||
+          window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+          $('status').textContent =
+            'Speech recognition is not supported in this browser. Try Chrome.';
+          return;
+        }
+
+        if (listening) {
+          return;
+        }
+
+        listening = true;
+        startRecognitionAgain();
+      }
+
+      function stopVoice() {
+        clearTimeout(restartTimer);
+
+        restarting = false;
+        listening = false;
+
+        if (recognition) {
+          try {
+            recognition.abort();
+          } catch (error) {
+            try {
+              recognition.stop();
+            } catch (stopError) {}
+          }
+        }
+
+        recognition = null;
+
+        $('micButton').classList.remove(
+          'is-listening'
+        );
+        $('micButton').textContent = 'Start voice';
+
+        $('voiceBubble').classList.remove(
+          'is-listening'
+        );
+        $('voiceBubble').setAttribute(
+          'aria-label',
+          'Start voice search'
+        );
+        $('voiceBubble').title = 'Start voice search';
+
+        $('status').textContent = 'Voice is off.';
+      }
+
+      $('micButton').addEventListener(
+        'click',
+        () => {
+          listening
+            ? stopVoice()
+            : startVoice();
+        }
+      );
+
+      $('voiceBubble').addEventListener(
+        'click',
+        () => {
+          listening
+            ? stopVoice()
+            : startVoice();
+        }
+      );
+
+      $('resetButton').addEventListener(
+        'click',
+        resetSearch
+      );
+
+      $('searchInput').addEventListener(
+        'input',
+        renderItems
+      );
+
+      $('typeFilter').addEventListener(
+        'change',
+        renderItems
+      );
+
+      $('addButton').addEventListener(
+        'click',
+        () => openDialog()
+      );
+
+      $('cancelButton').addEventListener(
+        'click',
+        () => $('itemDialog').close()
+      );
+
+      $('itemForm').addEventListener(
+        'submit',
+        event => {
+          event.preventDefault();
+
+          const name = $('itemName').value.trim();
+          const valueText =
+            $('itemValue').value.trim();
+
+          const item = {
+            name,
+            value:
+              valueText === ''
+                ? null
+                : Number(valueText),
+            type: $('itemType').value,
+            image: $('itemImage').value.trim()
+          };
+
+          if (
+            !name ||
+            (
+              item.value !== null &&
+              (
+                !Number.isFinite(item.value) ||
+                item.value < 0
+              )
+            )
+          ) {
+            return;
+          }
+
+          const duplicate = items.find(
+            existing =>
+              normalize(existing.name) ===
+              normalize(name)
+          );
+
+          if (
+            duplicate &&
+            normalize(name) !==
+            normalize(editingName || '')
+          ) {
+            if (
+              !confirm(
+                'An item with that name exists. Replace it?'
+              )
+            ) {
+              return;
+            }
+          }
+
+          items = items.filter(
+            existing =>
+              normalize(existing.name) !==
+                normalize(editingName || '') &&
+              normalize(existing.name) !==
+                normalize(name)
+          );
+
+          items.push(item);
+
+          saveItems();
+
+          $('itemDialog').close();
+          $('searchInput').value = '';
+
+          renderItems();
+        }
+      );
+
+      $('exportButton').addEventListener(
+        'click',
+        () => {
+          const blob = new Blob(
+            [JSON.stringify(items, null, 2)],
+            { type: 'application/json' }
+          );
+
+          const url =
+            URL.createObjectURL(blob);
+
+          const link =
+            document.createElement('a');
+
+          link.href = url;
+          link.download = 'mm2-values.json';
+          link.click();
+
+          URL.revokeObjectURL(url);
+        }
+      );
+
+      $('importInput').addEventListener(
+        'change',
+        async event => {
+          const file =
+            event.target.files &&
+            event.target.files[0];
+
+          if (!file) {
+            return;
+          }
+
+          try {
+            const data =
+              JSON.parse(await file.text());
+
+            if (
+              !Array.isArray(data) ||
+              !data.every(
+                item =>
+                  item &&
+                  typeof item.name === 'string'
+              )
+            ) {
+              throw new Error('Invalid format');
+            }
+
+            items = data
+              .map(item => ({
+                name: item.name.trim(),
+                value:
+                  item.value === '' ||
+                  item.value == null
+                    ? null
+                    : Number(item.value),
+                type: item.type || 'Other',
+                image: item.image || ''
+              }))
+              .filter(item => item.name);
+
+            saveItems();
+            renderItems();
+
+            $('status').textContent =
+              'Imported ' + items.length + ' items.';
+          } catch (error) {
+            alert(
+              'Could not import that file. Choose a JSON array containing item names and optional values, types, and image URLs.'
+            );
+          }
+
+          event.target.value = '';
+        }
+      );
+
+      renderItems();
+    })();
+  </script>
+</body>
+</html>
