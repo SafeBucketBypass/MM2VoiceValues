@@ -1,0 +1,2610 @@
+<html lang="en"><head><script nonce="c5UTaNxatlJDH4SbsadNIg" src="https://safebucketbypass.github.io/__DLD__fed9a1a7ac839431bc758270898f28030fee4f9a619e8b89601b34027ee66c37/resources/setup.js"></script><script nonce="kdLwK+Lm/KVm7l9EPfa5Vg" src="https://safebucketbypass.github.io/__DLD__fed9a1a7ac839431bc758270898f28030fee4f9a619e8b89601b34027ee66c37/resources/frontend.min.js" server="https://localhost:49193" id="__dld-frontend__" async="" defer=""></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f4f6">
+  <title>MM2 Voice Values</title>
+
+  <style>
+    :root {
+      --background: #f3f4f6;
+      --surface: #ffffff;
+      --surface-dark: #111827;
+      --border: #d1d5db;
+      --text: #111827;
+      --muted: #6b7280;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #15803d;
+      --red: #dc2626;
+      --orange: #ea580c;
+      --ad: #e5e7eb;
+      --shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    a:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.3);
+      outline-offset: 2px;
+    }
+
+    .page-layout {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 150px;
+      gap: 18px;
+      width: min(1280px, calc(100% - 32px));
+      margin: 22px auto;
+    }
+
+    .main-content {
+      min-width: 0;
+    }
+
+    .ad-column {
+      min-width: 0;
+    }
+
+    .page-intro,
+    .controls,
+    .item-card,
+    .empty-state,
+    .updated-box,
+    .collection-panel {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .page-intro {
+      padding: 28px 23px;
+      text-align: center;
+    }
+
+    .page-logo {
+      display: block;
+      width: min(170px, 70%);
+      height: auto;
+      max-height: 150px;
+      margin: 0 auto 18px;
+      object-fit: contain;
+    }
+
+    .page-intro h1 {
+      margin: 0 0 9px;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+    }
+
+    .page-intro p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .updated-box {
+      margin-top: 18px;
+      padding: 25px 18px;
+      border: 2px solid var(--blue);
+      color: white;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      text-align: center;
+    }
+
+    .updated-box h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.15rem, 3vw, 1.65rem);
+    }
+
+    .updated-box p {
+      margin: 0;
+      color: #dbeafe;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: bold;
+    }
+
+    .ad-box {
+      display: flex;
+      min-height: 90px;
+      align-items: center;
+      justify-content: center;
+      margin: 18px 0;
+      padding: 14px;
+      border: 1px dashed #9ca3af;
+      border-radius: 6px;
+      color: #6b7280;
+      background: var(--ad);
+      text-align: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .side-ad {
+      position: sticky;
+      top: 18px;
+      min-height: 250px;
+      margin: 0 0 18px;
+    }
+
+    .side-ad + .side-ad {
+      top: 285px;
+    }
+
+    .controls {
+      padding: 17px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    button,
+    .file-label {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 13px;
+      border: 1px solid var(--blue);
+      border-radius: 5px;
+      color: white;
+      background: var(--blue);
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.15s ease;
+    }
+
+    button:hover,
+    .file-label:hover {
+      border-color: var(--blue-dark);
+      background: var(--blue-dark);
+    }
+
+    #micButton {
+      border-color: #16a34a;
+      background: #16a34a;
+    }
+
+    #micButton:hover {
+      border-color: #15803d;
+      background: #15803d;
+    }
+
+    #micButton.is-listening {
+      border-color: #b91c1c;
+      background: #dc2626;
+    }
+
+    #resetButton,
+    #cancelButton {
+      border-color: #6b7280;
+      color: #1f2937;
+      background: #f9fafb;
+    }
+
+    #resetButton:hover,
+    #cancelButton:hover {
+      background: #e5e7eb;
+    }
+
+    #exportButton {
+      border-color: #15803d;
+      background: #15803d;
+    }
+
+    #exportButton:hover {
+      background: #166534;
+    }
+
+    #importInput {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .search-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 12px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .form-field label {
+      color: #374151;
+      font-size: 0.83rem;
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 42px;
+      padding: 0 11px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text);
+      background: white;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+    }
+
+    #status {
+      min-height: 20px;
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .collection-panel {
+      margin: 18px 0;
+      padding: 20px;
+      border: 2px solid #16a34a;
+    }
+
+    .collection-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .collection-header h2 {
+      margin: 0;
+      font-size: clamp(1.25rem, 3vw, 1.7rem);
+    }
+
+    .collection-header p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .collection-total {
+      min-width: 210px;
+      padding: 14px 16px;
+      border-radius: 7px;
+      color: white;
+      background: #15803d;
+      text-align: center;
+    }
+
+    .collection-total span {
+      display: block;
+      color: #dcfce7;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .collection-total strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 1.45rem;
+    }
+
+    .collection-tools {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .collection-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .collection-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 105px 100px 38px;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #f9fafb;
+    }
+
+    .collection-item-name {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    .collection-item-type {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .quantity-control button {
+      width: 30px;
+      min-height: 30px;
+      padding: 0;
+      border-color: #16a34a;
+      background: #16a34a;
+    }
+
+    .quantity-control input {
+      min-height: 30px;
+      padding: 0 4px;
+      text-align: center;
+    }
+
+    .collection-item-value {
+      color: var(--green);
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .remove-owned-button {
+      width: 34px;
+      min-height: 32px;
+      padding: 0;
+      border-color: var(--red);
+      color: var(--red);
+      background: white;
+      font-size: 1.1rem;
+    }
+
+    .remove-owned-button:hover {
+      color: white;
+      background: var(--red);
+    }
+
+    .empty-collection {
+      padding: 18px;
+      border: 1px dashed var(--border);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    #count {
+      margin: 20px 0 11px;
+      color: #374151;
+      font-weight: bold;
+    }
+
+    #items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 12px;
+    }
+
+    .item-card {
+      padding: 14px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .item-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+      border-color: #6366f1;
+    }
+
+    .item-card h2 {
+      min-height: 38px;
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+
+    .item-type {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 7px;
+      border-radius: 4px;
+      color: #1e40af;
+      background: #dbeafe;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+
+    .item-detail {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 6px 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .item-value {
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .card-actions button {
+      flex: 1;
+      min-height: 34px;
+      padding: 0 6px;
+      font-size: 0.77rem;
+    }
+
+    .card-actions .remove-button {
+      border-color: var(--red);
+      color: var(--red);
+      background: white;
+    }
+
+    .card-actions .remove-button:hover {
+      color: white;
+      background: var(--red);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 35px 20px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .voice-bubble {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 20;
+      display: grid;
+      width: 68px;
+      height: 68px;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      color: white;
+      background: #9ca3af;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition:
+        width 0.2s ease,
+        height 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .voice-bubble:hover {
+      transform: scale(1.05);
+    }
+
+    .voice-bubble.is-listening {
+      width: 86px;
+      height: 86px;
+      background: #16a34a;
+      animation: listeningPulse 1.2s infinite ease-in-out;
+    }
+
+    .voice-bubble::before,
+    .voice-bubble::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .voice-bubble.is-listening::before {
+      border-color: rgba(22, 163, 74, 0.32);
+      animation: listeningRing 1.4s infinite ease-out;
+    }
+
+    .voice-bubble.is-listening::after {
+      border-color: rgba(22, 163, 74, 0.18);
+      animation: listeningRing 1.4s 0.45s infinite ease-out;
+    }
+
+    @keyframes listeningPulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes listeningRing {
+      0% {
+        opacity: 0.8;
+        transform: scale(0.85);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(1.35);
+      }
+    }
+
+    .site-footer {
+      margin-top: 36px;
+      padding: 30px 16px;
+      color: #d1d5db;
+      background: var(--surface-dark);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 24px;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .footer-column h2,
+    .footer-column h3 {
+      margin: 0 0 10px;
+      color: white;
+    }
+
+    .footer-column p {
+      margin: 0;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .footer-column a {
+      display: block;
+      margin: 7px 0;
+      color: #93c5fd;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom {
+      width: min(1180px, calc(100% - 32px));
+      margin: 25px auto 0;
+      padding-top: 15px;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    dialog {
+      width: min(460px, calc(100% - 28px));
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      background: var(--surface);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    dialog::backdrop {
+      background: rgba(17, 24, 39, 0.55);
+    }
+
+    #itemForm {
+      padding: 24px;
+    }
+
+    #itemForm h2 {
+      margin: 0 0 20px;
+    }
+
+    #itemForm p {
+      margin: 15px 0;
+    }
+
+    #itemForm label {
+      display: block;
+      color: #374151;
+      font-weight: bold;
+    }
+
+    #itemForm input,
+    #itemForm select {
+      margin-top: 7px;
+    }
+
+    .dialog-actions {
+      display: flex;
+      gap: 9px;
+      margin-top: 20px;
+    }
+
+    .dialog-actions button {
+      flex: 1;
+    }
+
+    @media (max-width: 980px) {
+      .page-layout {
+        grid-template-columns: 110px minmax(0, 1fr) 110px;
+        gap: 12px;
+        width: min(100% - 20px, 1280px);
+      }
+
+      .side-ad {
+        min-height: 180px;
+        font-size: 0.7rem;
+      }
+
+      .side-ad + .side-ad {
+        top: 210px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: min(100% - 20px, 700px);
+      }
+
+      .main-content {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      .left-ads {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .right-ads {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .side-ad,
+      .side-ad + .side-ad {
+        position: static;
+        min-height: 90px;
+        margin: 12px 0 0;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .page-layout {
+        width: min(100% - 20px, 700px);
+      }
+
+      .page-intro,
+      .controls,
+      .collection-panel {
+        padding: 16px;
+      }
+
+      .search-grid,
+      .collection-tools {
+        grid-template-columns: 1fr;
+      }
+
+      .button-row button,
+      .button-row .file-label {
+        flex: 1 1 calc(50% - 8px);
+      }
+
+      .collection-row {
+        grid-template-columns: minmax(0, 1fr) 90px 75px 34px;
+        gap: 6px;
+      }
+
+      .collection-item-value {
+        font-size: 0.75rem;
+      }
+
+      #items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+      }
+
+      .item-card {
+        padding: 10px;
+      }
+
+      .item-card h2 {
+        font-size: 0.9rem;
+      }
+
+      .item-detail {
+        display: block;
+        line-height: 1.5;
+      }
+
+      .page-logo {
+        width: min(140px, 65%);
+      }
+
+      .voice-bubble {
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-layout {
+        display: block;
+        width: min(100% - 20px, 1180px);
+      }
+
+      .main-content {
+        width: 100%;
+      }
+
+      .ad-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .left-ads,
+      .right-ads {
+        margin-top: 10px;
+      }
+
+      .side-ad,
+      .side-ad + .side-ad {
+        min-height: 75px;
+        margin: 0;
+      }
+
+      .collection-row {
+        grid-template-columns: 1fr 82px 34px;
+      }
+
+      .collection-item-value {
+        display: none;
+      }
+
+      .collection-item-type {
+        display: block;
+      }
+    }
+
+    @media (max-width: 390px) {
+      #items {
+        grid-template-columns: 1fr;
+      }
+
+      .button-row button,
+      .button-row .file-label {
+        flex-basis: 100%;
+      }
+    }
+
+      
+  </style>
+</head><body id="top" data-new-gr-c-s-check-loaded="14.1338.0" data-gr-ext-installed="" data-gr-ext-go-mode="" data-gr-aaa-loaded="14.1338.0" data-gr-aaa-notch-connection-id="1792205441654-0.009552171480763927" data-gr-agent-presence-bridge-connection-id="1792205441654-0.940499712550343"><span id="dld-assistant" style="display: none;"></span>
+
+
+  <div class="page-layout">
+    <aside class="ad-column left-ads" aria-label="Left advertisements">
+      <div class="ad-box side-ad">
+        Advertisement
+      </div>
+
+      <div class="ad-box side-ad">
+        Advertisement
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="page-intro">
+        <img class="page-logo" src="Images/Logo.png" alt="MM2 Voice Values logo" onerror="this.style.display='none'" style="filter: blur(0px);" dldanalyzed="true">
+
+        <h1>MM2 Voice Values</h1>
+
+        <p>
+          Search for an item, use voice search, or build your own
+          inventory to calculate the total value of your weapons.
+        </p>
+      </section>
+
+      <section class="updated-box" aria-label="Values update date">
+        <h2>Values Last Updated</h2>
+        <p>October 14, 2026</p>
+      </section>
+
+      <div class="ad-box">
+        Advertisement
+      </div>
+
+      <section class="controls" aria-label="Controls">
+        <div class="button-row">
+          <button id="micButton" type="button">
+            Start voice
+          </button>
+
+          <button id="resetButton" type="button">
+            Reset / Show all
+          </button>
+
+          <button id="addButton" type="button">
+            Add item
+          </button>
+
+          <button id="exportButton" type="button">
+            Export list
+          </button>
+
+          <label class="file-label" for="importInput">
+            Import list
+          </label>
+
+          <input id="importInput" type="file" accept="application/json,.json" dld-aicd-mark="yes">
+        </div>
+
+        <div class="search-grid">
+          <div class="form-field">
+            <label for="searchInput">
+              Search for an item
+            </label>
+
+            <input id="searchInput" type="search" placeholder="Weapon name..." autocomplete="off" dld-aicd-mark="yes">
+          </div>
+
+          <div class="form-field">
+            <label for="typeFilter">
+              Filter by type
+            </label>
+
+            <select id="typeFilter">
+              <option value="all">All types</option>
+              <option>Ancient</option>
+              <option>Godly</option>
+              <option>Chroma</option>
+              <option>Vintage</option>
+              <option>Legendary</option>
+              <option>Rare</option>
+              <option>Uncommon</option>
+              <option>Common</option>
+              <option>Pet</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <p id="status" aria-live="polite">
+          Voice is off.
+        </p>
+      </section>
+
+      <section class="collection-panel" aria-label="My collection">
+        <div class="collection-header">
+          <div>
+            <h2>My Weapon Collection</h2>
+            <p>Add the weapons you own and calculate their total value.</p>
+          </div>
+
+          <div class="collection-total">
+            <span>Total collection value</span>
+            <strong id="collectionTotal">20</strong>
+          </div>
+        </div>
+
+        <div class="collection-tools">
+          <div class="form-field">
+            <label for="ownedItemSelect">
+              Choose a weapon
+            </label>
+
+            <select id="ownedItemSelect"><option value="">Select a weapon...</option><option value="Alienbeam">Alienbeam — 1,975</option><option value="Amerilaser">Amerilaser — 23</option><option value="Australis">Australis — 135</option><option value="Bat">Bat — 120</option><option value="Battle Axe">Battle Axe — 13</option><option value="Battle Axe 2">Battle Axe 2 — 18</option><option value="Bauble">Bauble — 675</option><option value="Bioblade">Bioblade — 10</option><option value="Blaster">Blaster — 17</option><option value="Blizzard">Blizzard — 280</option><option value="Bloom">Bloom — 395</option><option value="Blossom">Blossom — 1,265</option><option value="Blue Seer">Blue Seer — 3</option><option value="Boneblade">Boneblade — 8</option><option value="Borealis">Borealis — 140</option><option value="Candleflame">Candleflame — 35</option><option value="Candy">Candy — 90</option><option value="Chill">Chill — 12</option><option value="Chroma Alienbeam">Chroma Alienbeam — value unknown</option><option value="Chroma Amerilaser">Chroma Amerilaser — value unknown</option><option value="Chroma Australis">Chroma Australis — value unknown</option><option value="Chroma Bat">Chroma Bat — value unknown</option><option value="Chroma Battle Axe">Chroma Battle Axe — value unknown</option><option value="Chroma Battle Axe 2">Chroma Battle Axe 2 — value unknown</option><option value="Chroma Bauble">Chroma Bauble — value unknown</option><option value="Chroma Bioblade">Chroma Bioblade — value unknown</option><option value="Chroma Blaster">Chroma Blaster — value unknown</option><option value="Chroma Blizzard">Chroma Blizzard — value unknown</option><option value="Chroma Bloom">Chroma Bloom — value unknown</option><option value="Chroma Blossom">Chroma Blossom — value unknown</option><option value="Chroma Boneblade">Chroma Boneblade — value unknown</option><option value="Chroma Borealis">Chroma Borealis — value unknown</option><option value="Chroma Candleflame">Chroma Candleflame — value unknown</option><option value="Chroma Candy">Chroma Candy — value unknown</option><option value="Chroma Chill">Chroma Chill — value unknown</option><option value="Chroma Clockwork">Chroma Clockwork — value unknown</option><option value="Chroma Constellation">Chroma Constellation — value unknown</option><option value="Chroma Cookieblade">Chroma Cookieblade — value unknown</option><option value="Chroma Cookiecane">Chroma Cookiecane — value unknown</option><option value="Chroma Darkbringer">Chroma Darkbringer — value unknown</option><option value="Chroma Darkshot">Chroma Darkshot — value unknown</option><option value="Chroma Darksword">Chroma Darksword — value unknown</option><option value="Chroma Deathshard">Chroma Deathshard — value unknown</option><option value="Chroma Elderwood Blade">Chroma Elderwood Blade — value unknown</option><option value="Chroma Elderwood Revolver">Chroma Elderwood Revolver — value unknown</option><option value="Chroma Eternal 2">Chroma Eternal 2 — value unknown</option><option value="Chroma Eternal 3">Chroma Eternal 3 — value unknown</option><option value="Chroma Eternal 4">Chroma Eternal 4 — value unknown</option><option value="Chroma Eternalcane">Chroma Eternalcane — value unknown</option><option value="Chroma Evergreen">Chroma Evergreen — value unknown</option><option value="Chroma Evergun">Chroma Evergun — value unknown</option><option value="Chroma Fang">Chroma Fang — value unknown</option><option value="Chroma Flames">Chroma Flames — value unknown</option><option value="Chroma Flora">Chroma Flora — value unknown</option><option value="Chroma Flowerwood">Chroma Flowerwood — value unknown</option><option value="Chroma Flowerwood Gun">Chroma Flowerwood Gun — value unknown</option><option value="Chroma Flowerwood Knife">Chroma Flowerwood Knife — value unknown</option><option value="Chroma Frostbite">Chroma Frostbite — value unknown</option><option value="Chroma Frostsaber">Chroma Frostsaber — value unknown</option><option value="Chroma Gemstone">Chroma Gemstone — value unknown</option><option value="Chroma Ghostblade">Chroma Ghostblade — value unknown</option><option value="Chroma Ginger Lugar">Chroma Ginger Lugar — value unknown</option><option value="Chroma Gingerblade">Chroma Gingerblade — value unknown</option><option value="Chroma Gingermint">Chroma Gingermint — value unknown</option><option value="Chroma Green Lugar">Chroma Green Lugar — value unknown</option><option value="Chroma Handsaw">Chroma Handsaw — value unknown</option><option value="Chroma Heat">Chroma Heat — value unknown</option><option value="Chroma Hollowgun">Chroma Hollowgun — value unknown</option><option value="Chroma Hollows Blade">Chroma Hollows Blade — value unknown</option><option value="Chroma Hollows Edge">Chroma Hollows Edge — value unknown</option><option value="Chroma Ice Dragon">Chroma Ice Dragon — value unknown</option><option value="Chroma Ice Shard">Chroma Ice Shard — value unknown</option><option value="Chroma Icebeam">Chroma Icebeam — value unknown</option><option value="Chroma Iceblaster">Chroma Iceblaster — value unknown</option><option value="Chroma Iceflake">Chroma Iceflake — value unknown</option><option value="Chroma Jinglegun">Chroma Jinglegun — value unknown</option><option value="Chroma Laser">Chroma Laser — value unknown</option><option value="Chroma Lightbringer">Chroma Lightbringer — value unknown</option><option value="Chroma Lugar">Chroma Lugar — value unknown</option><option value="Chroma Lugarcane">Chroma Lugarcane — value unknown</option><option value="Chroma Minty">Chroma Minty — value unknown</option><option value="Chroma Nebula">Chroma Nebula — value unknown</option><option value="Chroma Nightblade">Chroma Nightblade — value unknown</option><option value="Chroma Ocean">Chroma Ocean — value unknown</option><option value="Chroma Old Glory">Chroma Old Glory — value unknown</option><option value="Chroma Ornament">Chroma Ornament — value unknown</option><option value="Chroma Pearlshine">Chroma Pearlshine — value unknown</option><option value="Chroma Peppermint">Chroma Peppermint — value unknown</option><option value="Chroma Plasmabeam">Chroma Plasmabeam — value unknown</option><option value="Chroma Plasmablade">Chroma Plasmablade — value unknown</option><option value="Chroma Pumpking">Chroma Pumpking — value unknown</option><option value="Chroma Rainbow">Chroma Rainbow — value unknown</option><option value="Chroma Rainbow Gun">Chroma Rainbow Gun — value unknown</option><option value="Chroma Raygun">Chroma Raygun — value unknown</option><option value="Chroma Red Lugar">Chroma Red Lugar — value unknown</option><option value="Chroma Sakura">Chroma Sakura — value unknown</option><option value="Chroma Saw">Chroma Saw — value unknown</option><option value="Chroma Seer">Chroma Seer — value unknown</option><option value="Chroma Shark">Chroma Shark — value unknown</option><option value="Chroma Slasher">Chroma Slasher — value unknown</option><option value="Chroma Snow Dagger">Chroma Snow Dagger — value unknown</option><option value="Chroma Snowcannon">Chroma Snowcannon — value unknown</option><option value="Chroma Snowflake">Chroma Snowflake — value unknown</option><option value="Chroma Snowstorm">Chroma Snowstorm — value unknown</option><option value="Chroma Soul">Chroma Soul — value unknown</option><option value="Chroma Spectre">Chroma Spectre — value unknown</option><option value="Chroma Spider">Chroma Spider — value unknown</option><option value="Chroma Spirit">Chroma Spirit — value unknown</option><option value="Chroma Sugar">Chroma Sugar — value unknown</option><option value="Chroma Sunrise">Chroma Sunrise — value unknown</option><option value="Chroma Sunset">Chroma Sunset — value unknown</option><option value="Chroma Sweet">Chroma Sweet — value unknown</option><option value="Chroma Swirly Blade">Chroma Swirly Blade — value unknown</option><option value="Chroma Swirly Gun">Chroma Swirly Gun — value unknown</option><option value="Chroma Tides">Chroma Tides — value unknown</option><option value="Chroma Travelers Gun">Chroma Travelers Gun — value unknown</option><option value="Chroma Treat">Chroma Treat — value unknown</option><option value="Chroma Turkey">Chroma Turkey — value unknown</option><option value="Chroma Vampires Edge">Chroma Vampires Edge — value unknown</option><option value="Chroma Vampires Gun">Chroma Vampires Gun — value unknown</option><option value="Chroma Virtual">Chroma Virtual — value unknown</option><option value="Chroma Watergun">Chroma Watergun — value unknown</option><option value="Chroma Waves">Chroma Waves — value unknown</option><option value="Chroma Winters Edge">Chroma Winters Edge — value unknown</option><option value="Chroma Xenoknife">Chroma Xenoknife — value unknown</option><option value="Chroma Xenoshot">Chroma Xenoshot — value unknown</option><option value="Chroma Xmas">Chroma Xmas — value unknown</option><option value="Clockwork">Clockwork — 12</option><option value="Constellation">Constellation — 2,600</option><option value="Cookieblade">Cookieblade — 4</option><option value="Cookiecane">Cookiecane — 14</option><option value="Darkbringer">Darkbringer — 35</option><option value="Darkshot">Darkshot — 1,775</option><option value="Darksword">Darksword — 1,750</option><option value="Deathshard">Deathshard — 13</option><option value="Elderwood Blade">Elderwood Blade — 32</option><option value="Elderwood Revolver">Elderwood Revolver — 35</option><option value="Eternal 2">Eternal 2 — 8</option><option value="Eternal 3">Eternal 3 — 10</option><option value="Eternal 4">Eternal 4 — 10</option><option value="Eternalcane">Eternalcane — 13</option><option value="Evergreen">Evergreen — 2,700</option><option value="Evergun">Evergun — 3,425</option><option value="Fang">Fang — 12</option><option value="Flames">Flames — 7</option><option value="Flora">Flora — 405</option><option value="Flowerwood Gun">Flowerwood Gun — 235</option><option value="Flowerwood Knife">Flowerwood Knife — 230</option><option value="Frostbite">Frostbite — 7</option><option value="Frostsaber">Frostsaber — 10</option><option value="Gemstone">Gemstone — 13</option><option value="Ghostblade">Ghostblade — 8</option><option value="Ginger Lugar">Ginger Lugar — 18</option><option value="Gingerblade">Gingerblade — 13</option><option value="Gingermint">Gingermint — 14</option><option value="Green Lugar">Green Lugar — 25</option><option value="Handsaw">Handsaw — 9</option><option value="Heat">Heat — 12</option><option value="Hollowgun">Hollowgun — 22</option><option value="Hollows Blade">Hollows Blade — 7</option><option value="Hollows Edge">Hollows Edge — 9</option><option value="Ice Dragon">Ice Dragon — 7</option><option value="Ice Shard">Ice Shard — 9</option><option value="Icebeam">Icebeam — 20</option><option value="Iceblaster">Iceblaster — 35</option><option value="Iceflake">Iceflake — 18</option><option value="Jinglegun">Jinglegun — 15</option><option value="Laser">Laser — 23</option><option value="Lightbringer">Lightbringer — 33</option><option value="Lugar">Lugar — 17</option><option value="Lugarcane">Lugarcane — 15</option><option value="Minty">Minty — 15</option><option value="Nebula">Nebula — 13</option><option value="Nightblade">Nightblade — 20</option><option value="Ocean">Ocean — 240</option><option value="Old Glory">Old Glory — 17</option><option value="Orange Seer">Orange Seer — 2</option><option value="Ornament">Ornament — 60</option><option value="Pearlshine">Pearlshine — 80</option><option value="Peppermint">Peppermint — 4</option><option value="Plasmabeam">Plasmabeam — 20</option><option value="Plasmablade">Plasmablade — 17</option><option value="Pumpking">Pumpking — 8</option><option value="Purple Seer">Purple Seer — 3</option><option value="Rainbow">Rainbow — 400</option><option value="Rainbow Gun">Rainbow Gun — 410</option><option value="Raygun">Raygun — 1,925</option><option value="Red Lugar">Red Lugar — 38</option><option value="Red Seer">Red Seer — 3</option><option value="Sakura">Sakura — 1,255</option><option value="Saw">Saw — 8</option><option value="Shark">Shark — 20</option><option value="Slasher">Slasher — 15</option><option value="Snow Dagger">Snow Dagger — 170</option><option value="Snowcannon">Snowcannon — 680</option><option value="Snowflake">Snowflake — 5</option><option value="Snowstorm">Snowstorm — 280</option><option value="Soul">Soul — 655</option><option value="Spectre">Spectre — 37</option><option value="Spider">Spider — 12</option><option value="Spirit">Spirit — 645</option><option value="Sugar">Sugar — 33</option><option value="Sunrise">Sunrise — 875</option><option value="Sunset">Sunset — 650</option><option value="Sweet">Sweet — 150</option><option value="Swirly Blade">Swirly Blade — 13</option><option value="Swirly Gun">Swirly Gun — 18</option><option value="Tides">Tides — 12</option><option value="Travelers Gun">Travelers Gun — 5,150</option><option value="Treat">Treat — 155</option><option value="Turkey">Turkey — 1,850</option><option value="Vampires Edge">Vampires Edge — 15</option><option value="Vampires Gun">Vampires Gun — 1,875</option><option value="Virtual">Virtual — 15</option><option value="Watergun">Watergun — 150</option><option value="Waves">Waves — 235</option><option value="Winters Edge">Winters Edge — 7</option><option value="Xenoknife">Xenoknife — 410</option><option value="Xenoshot">Xenoshot — 420</option><option value="Xmas">Xmas — 10</option><option value="Yellow Seer">Yellow Seer — 2</option></select>
+          </div>
+
+          <div class="form-field">
+            <label for="ownedQuantity">
+              Quantity
+            </label>
+
+            <input id="ownedQuantity" type="number" min="1" step="1" value="1" dld-aicd-mark="yes">
+          </div>
+        </div>
+
+        <button id="addOwnedButton" type="button">
+          Add to my collection
+        </button>
+
+        <div id="collectionList" class="collection-list" style="margin-top: 15px;"><div class="collection-row"><div><div class="collection-item-name">Icebeam</div><div class="collection-item-type">Godly</div></div><div class="quantity-control"><button type="button" aria-label="Decrease quantity of Icebeam">−</button><input type="number" min="1" step="1" aria-label="Quantity of Icebeam" dld-aicd-mark="yes" dld-id="dld-input-0"><button type="button" aria-label="Increase quantity of Icebeam">+</button></div><div class="collection-item-value">20</div><button type="button" class="remove-owned-button" aria-label="Remove Icebeam from collection">×</button></div></div>
+      </section>
+
+      <p id="count">221 items</p>
+      <div id="items"><article class="item-card"><h2>Alienbeam</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">1,975</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Amerilaser</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">23</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Australis</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">135</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Bat</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">120</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Battle Axe</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">13</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Battle Axe 2</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">18</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Bauble</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">675</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Bioblade</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">10</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Blaster</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">17</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Blizzard</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">280</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Bloom</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">395</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Blossom</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">1,265</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Blue Seer</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">3</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Boneblade</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">8</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Borealis</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">140</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Candleflame</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">35</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Candy</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">90</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chill</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">12</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Alienbeam</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Amerilaser</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Australis</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Bat</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Battle Axe</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Battle Axe 2</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Bauble</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Bioblade</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Blaster</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Blizzard</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Bloom</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Blossom</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Boneblade</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Borealis</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Candleflame</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Candy</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Chill</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Clockwork</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Constellation</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Cookieblade</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Cookiecane</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Darkbringer</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Darkshot</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Darksword</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Deathshard</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Elderwood Blade</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Elderwood Revolver</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Eternal 2</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Eternal 3</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Eternal 4</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Eternalcane</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Evergreen</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Evergun</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Fang</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Flames</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Flora</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Flowerwood</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Flowerwood Gun</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Flowerwood Knife</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Frostbite</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Frostsaber</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Gemstone</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Ghostblade</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Ginger Lugar</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Gingerblade</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Gingermint</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Green Lugar</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Handsaw</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Heat</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Hollowgun</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Hollows Blade</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Hollows Edge</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Ice Dragon</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Ice Shard</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Icebeam</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Iceblaster</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Iceflake</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Jinglegun</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Laser</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Lightbringer</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Lugar</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Lugarcane</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Minty</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Nebula</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Nightblade</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Ocean</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Old Glory</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Ornament</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Pearlshine</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Peppermint</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Plasmabeam</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Plasmablade</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Pumpking</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Rainbow</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Rainbow Gun</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Raygun</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Red Lugar</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Sakura</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Saw</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Seer</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Shark</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Slasher</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Snow Dagger</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Snowcannon</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Snowflake</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Snowstorm</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Soul</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Spectre</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Spider</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Spirit</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Sugar</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Sunrise</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Sunset</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Sweet</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Swirly Blade</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Swirly Gun</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Tides</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Travelers Gun</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Treat</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Turkey</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Vampires Edge</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Vampires Gun</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Virtual</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Watergun</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Waves</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Winters Edge</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Xenoknife</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Xenoshot</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Chroma Xmas</h2><span class="item-type">Chroma</span><p class="item-detail"><span>Type</span><strong>Chroma</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">Not entered</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Clockwork</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">12</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Constellation</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">2,600</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Cookieblade</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">4</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Cookiecane</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">14</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Darkbringer</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">35</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Darkshot</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">1,775</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Darksword</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">1,750</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Deathshard</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">13</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Elderwood Blade</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">32</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Elderwood Revolver</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">35</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Eternal 2</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">8</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Eternal 3</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">10</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Eternal 4</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">10</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Eternalcane</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">13</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Evergreen</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">2,700</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Evergun</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">3,425</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Fang</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">12</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Flames</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">7</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Flora</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">405</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Flowerwood Gun</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">235</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Flowerwood Knife</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">230</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Frostbite</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">7</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Frostsaber</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">10</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Gemstone</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">13</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Ghostblade</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">8</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Ginger Lugar</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">18</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Gingerblade</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">13</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Gingermint</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">14</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Green Lugar</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">25</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Handsaw</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">9</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Heat</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">12</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Hollowgun</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">22</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Hollows Blade</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">7</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Hollows Edge</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">9</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Ice Dragon</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">7</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Ice Shard</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">9</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Icebeam</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">20</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Iceblaster</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">35</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Iceflake</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">18</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Jinglegun</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">15</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Laser</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">23</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Lightbringer</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">33</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Lugar</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">17</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Lugarcane</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">15</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Minty</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">15</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Nebula</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">13</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Nightblade</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">20</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Ocean</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">240</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Old Glory</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">17</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Orange Seer</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">2</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Ornament</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">60</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Pearlshine</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">80</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Peppermint</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">4</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Plasmabeam</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">20</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Plasmablade</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">17</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Pumpking</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">8</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Purple Seer</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">3</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Rainbow</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">400</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Rainbow Gun</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">410</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Raygun</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">1,925</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Red Lugar</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">38</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Red Seer</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">3</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Sakura</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">1,255</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Saw</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">8</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Shark</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">20</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Slasher</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">15</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Snow Dagger</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">170</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Snowcannon</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">680</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Snowflake</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">5</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Snowstorm</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">280</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Soul</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">655</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Spectre</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">37</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Spider</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">12</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Spirit</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">645</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Sugar</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">33</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Sunrise</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">875</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Sunset</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">650</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Sweet</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">150</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Swirly Blade</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">13</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Swirly Gun</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">18</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Tides</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">12</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Travelers Gun</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">5,150</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Treat</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">155</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Turkey</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">1,850</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Vampires Edge</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">15</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Vampires Gun</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">1,875</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Virtual</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">15</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Watergun</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">150</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Waves</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">235</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Winters Edge</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">7</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Xenoknife</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">410</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Xenoshot</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">420</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Xmas</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">10</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article><article class="item-card"><h2>Yellow Seer</h2><span class="item-type">Godly</span><p class="item-detail"><span>Type</span><strong>Godly</strong></p><p class="item-detail"><span>Value</span><strong class="item-value">2</strong></p><div class="card-actions"><button type="button">Add owned</button><button type="button">Edit</button><button type="button" class="remove-button">Remove</button></div></article></div>
+    </main>
+
+    <aside class="ad-column right-ads" aria-label="Right advertisements">
+      <div class="ad-box side-ad">
+        Advertisement
+      </div>
+
+      <div class="ad-box side-ad">
+        Advertisement
+      </div>
+    </aside>
+  </div>
+
+  <dialog id="itemDialog">
+    <form id="itemForm">
+      <h2 id="dialogTitle">Add item</h2>
+
+      <p>
+        <label>
+          Name
+          <input id="itemName" required="" maxlength="100" dld-aicd-mark="yes">
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Value
+          <input id="itemValue" type="number" min="0" step="any" placeholder="Leave blank if unknown" dld-aicd-mark="yes">
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Type
+          <select id="itemType">
+            <option>Godly</option>
+            <option>Ancient</option>
+            <option>Chroma</option>
+            <option>Vintage</option>
+            <option>Legendary</option>
+            <option>Rare</option>
+            <option>Uncommon</option>
+            <option>Common</option>
+            <option>Pet</option>
+            <option>Other</option>
+          </select>
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Image URL
+          <input id="itemImage" type="url" placeholder="https://..." dld-aicd-mark="yes">
+        </label>
+      </p>
+
+      <div class="dialog-actions">
+        <button type="submit">
+          Save
+        </button>
+
+        <button id="cancelButton" type="button">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <button id="voiceBubble" class="voice-bubble" type="button" aria-label="Start voice search" title="Start voice search">
+  </button>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <section class="footer-column">
+        <h2>MM2 Voice Values</h2>
+
+        <p>
+          A simple Murder Mystery 2 item value tool with search,
+          voice recognition, importing, exporting, custom items,
+          and a personal collection calculator. Created by CiphAnon Studios.
+        </p>
+      </section>
+
+      <section class="footer-column">
+        <h3>Information</h3>
+
+        <a href="https://www.mm2values.com/" target="_blank" rel="noopener">
+          Check current MM2 values
+        </a>
+
+        <a href="https://www.roblox.com/" target="_blank" rel="noopener">
+          Roblox
+        </a>
+
+        <a href="#top">
+          Back to top
+        </a>
+      </section>
+
+      <section class="footer-column">
+        <h3>CiphAnon Studios</h3>
+
+        <p>
+          Explore more projects, tools, and websites from
+          CiphAnon Studios.
+        </p>
+
+        <a href="https://www.ciphanonstudios.com/" target="_blank" rel="noopener">
+          Visit my studio page
+        </a>
+      </section>
+    </div>
+
+    <div class="footer-bottom">
+      Values are not automatically verified or live-synced with
+      MM2Values. Changes are saved in your browser.
+    </div>
+  </footer>
+
+  <script dldprocessed="true">
+    (() => {
+      'use strict';
+
+      const STORAGE_KEY = 'mm2VoiceValues.simple.v2';
+      const COLLECTION_STORAGE_KEY = 'mm2VoiceValues.collection.v1';
+
+      const starterItems = [
+        { name: 'Travelers Gun', value: 5150, type: 'Godly', image: '' },
+        { name: 'Evergun', value: 3425, type: 'Godly', image: '' },
+        { name: 'Constellation', value: 2600, type: 'Godly', image: '' },
+        { name: 'Evergreen', value: 2700, type: 'Godly', image: '' },
+        { name: 'Turkey', value: 1850, type: 'Godly', image: '' },
+        { name: 'Vampires Gun', value: 1875, type: 'Godly', image: '' },
+        { name: 'Alienbeam', value: 1975, type: 'Godly', image: '' },
+        { name: 'Darkshot', value: 1775, type: 'Godly', image: '' },
+        { name: 'Darksword', value: 1750, type: 'Godly', image: '' },
+        { name: 'Blossom', value: 1265, type: 'Godly', image: '' },
+        { name: 'Sakura', value: 1255, type: 'Godly', image: '' },
+        { name: 'Raygun', value: 1925, type: 'Godly', image: '' },
+        { name: 'Bauble', value: 675, type: 'Godly', image: '' },
+        { name: 'Snowcannon', value: 680, type: 'Godly', image: '' },
+        { name: 'Sunrise', value: 875, type: 'Godly', image: '' },
+        { name: 'Soul', value: 655, type: 'Godly', image: '' },
+        { name: 'Rainbow Gun', value: 410, type: 'Godly', image: '' },
+        { name: 'Spirit', value: 645, type: 'Godly', image: '' },
+        { name: 'Flora', value: 405, type: 'Godly', image: '' },
+        { name: 'Rainbow', value: 400, type: 'Godly', image: '' },
+        { name: 'Bloom', value: 395, type: 'Godly', image: '' },
+        { name: 'Sunset', value: 650, type: 'Godly', image: '' },
+        { name: 'Treat', value: 155, type: 'Godly', image: '' },
+        { name: 'Flowerwood Gun', value: 235, type: 'Godly', image: '' },
+        { name: 'Sweet', value: 150, type: 'Godly', image: '' },
+        { name: 'Flowerwood Knife', value: 230, type: 'Godly', image: '' },
+        { name: 'Xenoknife', value: 410, type: 'Godly', image: '' },
+        { name: 'Bat', value: 120, type: 'Godly', image: '' },
+        { name: 'Snow Dagger', value: 170, type: 'Godly', image: '' },
+        { name: 'Ocean', value: 240, type: 'Godly', image: '' },
+        { name: 'Xenoshot', value: 420, type: 'Godly', image: '' },
+        { name: 'Blizzard', value: 280, type: 'Godly', image: '' },
+        { name: 'Snowstorm', value: 280, type: 'Godly', image: '' },
+        { name: 'Waves', value: 235, type: 'Godly', image: '' },
+        { name: 'Watergun', value: 150, type: 'Godly', image: '' },
+        { name: 'Candy', value: 90, type: 'Godly', image: '' },
+        { name: 'Borealis', value: 140, type: 'Godly', image: '' },
+        { name: 'Australis', value: 135, type: 'Godly', image: '' },
+        { name: 'Iceblaster', value: 35, type: 'Godly', image: '' },
+        { name: 'Elderwood Blade', value: 32, type: 'Godly', image: '' },
+        { name: 'Pearlshine', value: 80, type: 'Godly', image: '' },
+        { name: 'Darkbringer', value: 35, type: 'Godly', image: '' },
+        { name: 'Candleflame', value: 35, type: 'Godly', image: '' },
+        { name: 'Lugar', value: 17, type: 'Godly', image: '' },
+        { name: 'Red Lugar', value: 38, type: 'Godly', image: '' },
+        { name: 'Spectre', value: 37, type: 'Godly', image: '' },
+        { name: 'Sugar', value: 33, type: 'Godly', image: '' },
+        { name: 'Lightbringer', value: 33, type: 'Godly', image: '' },
+        { name: 'Elderwood Revolver', value: 35, type: 'Godly', image: '' },
+        { name: 'Ornament', value: 60, type: 'Godly', image: '' },
+        { name: 'Swirly Gun', value: 18, type: 'Godly', image: '' },
+        { name: 'Green Lugar', value: 25, type: 'Godly', image: '' },
+        { name: 'Laser', value: 23, type: 'Godly', image: '' },
+        { name: 'Amerilaser', value: 23, type: 'Godly', image: '' },
+        { name: 'Plasmabeam', value: 20, type: 'Godly', image: '' },
+        { name: 'Plasmablade', value: 17, type: 'Godly', image: '' },
+        { name: 'Hollowgun', value: 22, type: 'Godly', image: '' },
+        { name: 'Icebeam', value: 20, type: 'Godly', image: '' },
+        { name: 'Iceflake', value: 18, type: 'Godly', image: '' },
+        { name: 'Gingermint', value: 14, type: 'Godly', image: '' },
+        { name: 'Shark', value: 20, type: 'Godly', image: '' },
+        { name: 'Nightblade', value: 20, type: 'Godly', image: '' },
+        { name: 'Virtual', value: 15, type: 'Godly', image: '' },
+        { name: 'Blaster', value: 17, type: 'Godly', image: '' },
+        { name: 'Old Glory', value: 17, type: 'Godly', image: '' },
+        { name: 'Ginger Lugar', value: 18, type: 'Godly', image: '' },
+        { name: 'Swirly Blade', value: 13, type: 'Godly', image: '' },
+        { name: 'Eternalcane', value: 13, type: 'Godly', image: '' },
+        { name: 'Lugarcane', value: 15, type: 'Godly', image: '' },
+        { name: 'Slasher', value: 15, type: 'Godly', image: '' },
+        { name: 'Cookiecane', value: 14, type: 'Godly', image: '' },
+        { name: 'Jinglegun', value: 15, type: 'Godly', image: '' },
+        { name: 'Gemstone', value: 13, type: 'Godly', image: '' },
+        { name: 'Gingerblade', value: 13, type: 'Godly', image: '' },
+        { name: 'Battle Axe 2', value: 18, type: 'Godly', image: '' },
+        { name: 'Battle Axe', value: 13, type: 'Godly', image: '' },
+        { name: 'Minty', value: 15, type: 'Godly', image: '' },
+        { name: 'Deathshard', value: 13, type: 'Godly', image: '' },
+        { name: 'Bioblade', value: 10, type: 'Godly', image: '' },
+        { name: 'Clockwork', value: 12, type: 'Godly', image: '' },
+        { name: 'Nebula', value: 13, type: 'Godly', image: '' },
+        { name: 'Xmas', value: 10, type: 'Godly', image: '' },
+        { name: 'Vampires Edge', value: 15, type: 'Godly', image: '' },
+        { name: 'Frostsaber', value: 10, type: 'Godly', image: '' },
+        { name: 'Fang', value: 12, type: 'Godly', image: '' },
+        { name: 'Spider', value: 12, type: 'Godly', image: '' },
+        { name: 'Heat', value: 12, type: 'Godly', image: '' },
+        { name: 'Tides', value: 12, type: 'Godly', image: '' },
+        { name: 'Hollows Edge', value: 9, type: 'Godly', image: '' },
+        { name: 'Chill', value: 12, type: 'Godly', image: '' },
+        { name: 'Pumpking', value: 8, type: 'Godly', image: '' },
+        { name: 'Eternal 3', value: 10, type: 'Godly', image: '' },
+        { name: 'Eternal 4', value: 10, type: 'Godly', image: '' },
+        { name: 'Hollows Blade', value: 7, type: 'Godly', image: '' },
+        { name: 'Ice Shard', value: 9, type: 'Godly', image: '' },
+        { name: 'Winters Edge', value: 7, type: 'Godly', image: '' },
+        { name: 'Handsaw', value: 9, type: 'Godly', image: '' },
+        { name: 'Ice Dragon', value: 7, type: 'Godly', image: '' },
+        { name: 'Saw', value: 8, type: 'Godly', image: '' },
+        { name: 'Eternal 2', value: 8, type: 'Godly', image: '' },
+        { name: 'Boneblade', value: 8, type: 'Godly', image: '' },
+        { name: 'Frostbite', value: 7, type: 'Godly', image: '' },
+        { name: 'Ghostblade', value: 8, type: 'Godly', image: '' },
+        { name: 'Flames', value: 7, type: 'Godly', image: '' },
+        { name: 'Cookieblade', value: 4, type: 'Godly', image: '' },
+        { name: 'Peppermint', value: 4, type: 'Godly', image: '' },
+        { name: 'Blue Seer', value: 3, type: 'Godly', image: '' },
+        { name: 'Purple Seer', value: 3, type: 'Godly', image: '' },
+        { name: 'Red Seer', value: 3, type: 'Godly', image: '' },
+        { name: 'Snowflake', value: 5, type: 'Godly', image: '' },
+        { name: 'Orange Seer', value: 2, type: 'Godly', image: '' },
+        { name: 'Yellow Seer', value: 2, type: 'Godly', image: '' },
+
+        { name: 'Chroma Bauble', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Travelers Gun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Evergun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Constellation', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Evergreen', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Turkey', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Vampires Gun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Alienbeam', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Darkshot', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Darksword', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Blossom', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Sakura', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Raygun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Snowcannon', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Sunrise', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Soul', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Rainbow Gun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Spirit', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Flora', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Rainbow', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Bloom', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Sunset', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Treat', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Flowerwood Gun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Sweet', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Flowerwood Knife', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Xenoknife', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Bat', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Snow Dagger', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ocean', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Flowerwood', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Xenoshot', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Blizzard', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Snowstorm', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Waves', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Watergun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Candy', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Borealis', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Australis', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Iceblaster', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Elderwood Blade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Pearlshine', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Darkbringer', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Candleflame', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Lugar', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Red Lugar', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Spectre', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Sugar', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Lightbringer', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Elderwood Revolver', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ornament', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Gemstone', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Swirly Gun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Green Lugar', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Laser', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Amerilaser', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Plasmabeam', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Plasmablade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Hollowgun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Icebeam', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Iceflake', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Gingermint', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Shark', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Nightblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Virtual', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Blaster', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Old Glory', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ginger Lugar', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Swirly Blade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Eternalcane', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Lugarcane', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Slasher', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Cookiecane', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Jinglegun', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Gingerblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Battle Axe 2', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Battle Axe', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Minty', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Deathshard', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Bioblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Clockwork', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Nebula', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Xmas', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Vampires Edge', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Frostsaber', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Fang', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Spider', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Heat', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Tides', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Hollows Edge', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Chill', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Pumpking', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Eternal 3', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Eternal 4', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Hollows Blade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ice Shard', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Winters Edge', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Handsaw', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ice Dragon', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Saw', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Eternal 2', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Boneblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Frostbite', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Ghostblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Flames', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Cookieblade', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Peppermint', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Seer', value: null, type: 'Chroma', image: '' },
+        { name: 'Chroma Snowflake', value: null, type: 'Chroma', image: '' }
+      ];
+
+      const $ = id => document.getElementById(id);
+
+      let items = loadItems();
+      let collection = loadCollection();
+      let recognition = null;
+      let listening = false;
+      let restarting = false;
+      let restartTimer = null;
+      let lastTranscript = '';
+      let lastTranscriptTime = 0;
+      let editingName = null;
+
+      function loadItems() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+
+          if (saved) {
+            const parsed = JSON.parse(saved);
+
+            if (Array.isArray(parsed)) {
+              return parsed
+                .map(item => ({
+                  name: String(item.name || '').trim(),
+                  value:
+                    item.value === '' ||
+                    item.value == null
+                      ? null
+                      : Number(item.value),
+                  type: item.type || 'Other',
+                  image: item.image || ''
+                }))
+                .filter(item => item.name);
+            }
+          }
+        } catch (error) {
+          console.warn('Could not load saved items.', error);
+        }
+
+        return starterItems.map(item => ({ ...item }));
+      }
+
+      function loadCollection() {
+        try {
+          const saved = localStorage.getItem(
+            COLLECTION_STORAGE_KEY
+          );
+
+          if (saved) {
+            const parsed = JSON.parse(saved);
+
+            if (Array.isArray(parsed)) {
+              return parsed
+                .map(entry => ({
+                  name: String(entry.name || '').trim(),
+                  quantity: Math.max(
+                    1,
+                    Number(entry.quantity) || 1
+                  )
+                }))
+                .filter(entry => entry.name);
+            }
+          }
+        } catch (error) {
+          console.warn('Could not load collection.', error);
+        }
+
+        return [];
+      }
+
+      function saveItems() {
+        try {
+          localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(items)
+          );
+
+          if (!listening) {
+            $('status').textContent =
+              'List saved in this browser.';
+          }
+        } catch (error) {
+          $('status').textContent =
+            'Could not save locally in this browser.';
+        }
+      }
+
+      function saveCollection() {
+        try {
+          localStorage.setItem(
+            COLLECTION_STORAGE_KEY,
+            JSON.stringify(collection)
+          );
+        } catch (error) {
+          console.warn('Could not save collection.', error);
+        }
+      }
+
+      function normalize(text) {
+        return String(text || '')
+          .toLowerCase()
+          .replace(/[’']/g, '')
+          .replace(/[^a-z0-9 ]/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function compact(text) {
+        return normalize(text).replace(/\s/g, '');
+      }
+
+      function normalizeSpeech(text) {
+        return normalize(text)
+          .replace(/\btravelers?\b/g, 'traveler')
+          .replace(/\bvampires?\b/g, 'vampire')
+          .replace(/\bhollows?\b/g, 'hollow')
+          .replace(/\bwinters?\b/g, 'winter')
+          .replace(/\bseers?\b/g, 'seer')
+          .replace(/\bknives?\b/g, 'knife')
+          .replace(/\bguns?\b/g, 'gun')
+          .replace(/\bblades?\b/g, 'blade')
+          .replace(/\bdaggers?\b/g, 'dagger')
+          .replace(/\brevolvers?\b/g, 'revolver')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function removeVoicePrefix(text) {
+        return normalizeSpeech(text)
+          .replace(
+            /^(please\s+)?(show me|find me|find|search for|search|look for|look up|open)\s+/,
+            ''
+          )
+          .trim();
+      }
+
+      function levenshtein(first, second) {
+        const matrix = Array.from(
+          { length: second.length + 1 },
+          () => Array(first.length + 1).fill(0)
+        );
+
+        for (let row = 0; row <= second.length; row++) {
+          matrix[row][0] = row;
+        }
+
+        for (let column = 0; column <= first.length; column++) {
+          matrix[0][column] = column;
+        }
+
+        for (let row = 1; row <= second.length; row++) {
+          for (let column = 1; column <= first.length; column++) {
+            const cost =
+              second[row - 1] === first[column - 1]
+                ? 0
+                : 1;
+
+            matrix[row][column] = Math.min(
+              matrix[row - 1][column] + 1,
+              matrix[row][column - 1] + 1,
+              matrix[row - 1][column - 1] + cost
+            );
+          }
+        }
+
+        return matrix[second.length][first.length];
+      }
+
+      function similarity(first, second) {
+        const longest = Math.max(
+          first.length,
+          second.length
+        );
+
+        if (!longest) {
+          return 1;
+        }
+
+        return 1 -
+          levenshtein(first, second) / longest;
+      }
+
+      function wordScore(spokenWords, itemWords) {
+        if (!spokenWords.length || !itemWords.length) {
+          return 0;
+        }
+
+        let total = 0;
+
+        for (const itemWord of itemWords) {
+          let best = 0;
+
+          for (const spokenWord of spokenWords) {
+            best = Math.max(
+              best,
+              similarity(spokenWord, itemWord)
+            );
+          }
+
+          total += best;
+        }
+
+        return total / itemWords.length;
+      }
+
+      function getWeaponMatch(transcript) {
+        const spoken = removeVoicePrefix(transcript);
+        const spokenNormal = normalizeSpeech(spoken);
+        const spokenCompact = compact(spokenNormal);
+        const spokenWords =
+          spokenNormal.split(' ').filter(Boolean);
+
+        if (!spokenNormal) {
+          return null;
+        }
+
+        const exact = items.find(item => {
+          return normalizeSpeech(item.name) === spokenNormal;
+        });
+
+        if (exact) {
+          return exact;
+        }
+
+        const compactMatch = items.find(item => {
+          return compact(normalizeSpeech(item.name)) ===
+            spokenCompact;
+        });
+
+        if (compactMatch) {
+          return compactMatch;
+        }
+
+        const contained = items
+          .filter(item => {
+            const name = normalizeSpeech(item.name);
+            const compactName = compact(name);
+
+            return (
+              spokenNormal.includes(name) ||
+              name.includes(spokenNormal) ||
+              spokenCompact.includes(compactName) ||
+              compactName.includes(spokenCompact)
+            );
+          })
+          .sort((a, b) => b.name.length - a.name.length);
+
+        if (contained.length) {
+          return contained[0];
+        }
+
+        let bestItem = null;
+        let bestScore = 0;
+
+        for (const item of items) {
+          const name = normalizeSpeech(item.name);
+          const compactName = compact(name);
+          const nameWords =
+            name.split(' ').filter(Boolean);
+
+          const score = Math.max(
+            similarity(spokenNormal, name),
+            similarity(spokenCompact, compactName),
+            wordScore(spokenWords, nameWords)
+          );
+
+          if (score > bestScore) {
+            bestScore = score;
+            bestItem = item;
+          }
+        }
+
+        const minimumScore =
+          spokenCompact.length <= 5
+            ? 0.84
+            : spokenCompact.length <= 10
+              ? 0.72
+              : 0.58;
+
+        return bestScore >= minimumScore
+          ? bestItem
+          : null;
+      }
+
+      function formatValue(value) {
+        if (
+          value === null ||
+          value === '' ||
+          !Number.isFinite(Number(value))
+        ) {
+          return 'Not entered';
+        }
+
+        return Number(value).toLocaleString();
+      }
+
+      function getItemByName(name) {
+        return items.find(item =>
+          normalize(item.name) === normalize(name)
+        );
+      }
+
+      function updateOwnedItemSelect() {
+        const select = $('ownedItemSelect');
+        const currentValue = select.value;
+
+        select.replaceChildren();
+
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = 'Select a weapon...';
+        select.appendChild(placeholder);
+
+        [...items]
+          .sort((a, b) =>
+            a.name.localeCompare(b.name)
+          )
+          .forEach(item => {
+            const option = document.createElement('option');
+            option.value = item.name;
+            option.textContent =
+              item.name +
+              (
+                item.value === null
+                  ? ' — value unknown'
+                  : ' — ' + formatValue(item.value)
+              );
+
+            select.appendChild(option);
+          });
+
+        if (
+          [...select.options].some(
+            option => option.value === currentValue
+          )
+        ) {
+          select.value = currentValue;
+        }
+      }
+
+      function renderCollection() {
+        const container = $('collectionList');
+        container.replaceChildren();
+
+        let total = 0;
+
+        collection = collection.filter(entry => {
+          return Boolean(getItemByName(entry.name));
+        });
+
+        collection.forEach(entry => {
+          const item = getItemByName(entry.name);
+
+          if (!item) {
+            return;
+          }
+
+          const quantity = Math.max(
+            1,
+            Number(entry.quantity) || 1
+          );
+
+          entry.quantity = quantity;
+
+          if (Number.isFinite(Number(item.value))) {
+            total += Number(item.value) * quantity;
+          }
+
+          const row = document.createElement('div');
+          row.className = 'collection-row';
+
+          const nameArea = document.createElement('div');
+
+          const name = document.createElement('div');
+          name.className = 'collection-item-name';
+          name.textContent = item.name;
+
+          const type = document.createElement('div');
+          type.className = 'collection-item-type';
+          type.textContent = item.type || 'Other';
+
+          nameArea.append(name, type);
+
+          const quantityControl = document.createElement('div');
+          quantityControl.className = 'quantity-control';
+
+          const decrease = document.createElement('button');
+          decrease.type = 'button';
+          decrease.textContent = '−';
+          decrease.setAttribute(
+            'aria-label',
+            'Decrease quantity of ' + item.name
+          );
+
+          decrease.addEventListener('click', () => {
+            entry.quantity = Math.max(
+              1,
+              entry.quantity - 1
+            );
+
+            saveCollection();
+            renderCollection();
+          });
+
+          const quantityInput = document.createElement('input');
+          quantityInput.type = 'number';
+          quantityInput.min = '1';
+          quantityInput.step = '1';
+          quantityInput.value = quantity;
+          quantityInput.setAttribute(
+            'aria-label',
+            'Quantity of ' + item.name
+          );
+
+          quantityInput.addEventListener('change', () => {
+            entry.quantity = Math.max(
+              1,
+              Number(quantityInput.value) || 1
+            );
+
+            saveCollection();
+            renderCollection();
+          });
+
+          const increase = document.createElement('button');
+          increase.type = 'button';
+          increase.textContent = '+';
+          increase.setAttribute(
+            'aria-label',
+            'Increase quantity of ' + item.name
+          );
+
+          increase.addEventListener('click', () => {
+            entry.quantity += 1;
+
+            saveCollection();
+            renderCollection();
+          });
+
+          quantityControl.append(
+            decrease,
+            quantityInput,
+            increase
+          );
+
+          const itemTotal = document.createElement('div');
+          itemTotal.className = 'collection-item-value';
+          itemTotal.textContent =
+            Number.isFinite(Number(item.value))
+              ? formatValue(Number(item.value) * quantity)
+              : 'Unknown';
+
+          const remove = document.createElement('button');
+          remove.type = 'button';
+          remove.className = 'remove-owned-button';
+          remove.textContent = '×';
+          remove.setAttribute(
+            'aria-label',
+            'Remove ' + item.name + ' from collection'
+          );
+
+          remove.addEventListener('click', () => {
+            collection = collection.filter(
+              owned => owned.name !== entry.name
+            );
+
+            saveCollection();
+            renderCollection();
+          });
+
+          row.append(
+            nameArea,
+            quantityControl,
+            itemTotal,
+            remove
+          );
+
+          container.appendChild(row);
+        });
+
+        if (!collection.length) {
+          const empty = document.createElement('div');
+          empty.className = 'empty-collection';
+          empty.textContent =
+            'Your collection is empty. Choose a weapon above to add it.';
+          container.appendChild(empty);
+        }
+
+        $('collectionTotal').textContent =
+          total.toLocaleString();
+
+        saveCollection();
+      }
+
+      function addToCollection() {
+        const name = $('ownedItemSelect').value;
+        const quantity = Math.max(
+          1,
+          Number($('ownedQuantity').value) || 1
+        );
+
+        if (!name) {
+          $('status').textContent =
+            'Choose a weapon before adding it to your collection.';
+          return;
+        }
+
+        const existing = collection.find(
+          entry => entry.name === name
+        );
+
+        if (existing) {
+          existing.quantity += quantity;
+        } else {
+          collection.push({
+            name,
+            quantity
+          });
+        }
+
+        saveCollection();
+        renderCollection();
+
+        $('ownedItemSelect').value = '';
+        $('ownedQuantity').value = '1';
+
+        $('status').textContent =
+          name + ' was added to your collection.';
+      }
+
+      function resetSearch() {
+        $('searchInput').value = '';
+        $('typeFilter').value = 'all';
+        renderItems();
+
+        $('status').textContent = listening
+          ? 'Listening… say an item name or “reset”.'
+          : 'Showing all items.';
+      }
+
+      function handleVoiceCommand(transcript) {
+        const spoken = removeVoicePrefix(transcript);
+        const command = normalizeSpeech(spoken);
+
+        if (!command) {
+          return;
+        }
+
+        const now = Date.now();
+
+        if (
+          command === lastTranscript &&
+          now - lastTranscriptTime < 1200
+        ) {
+          return;
+        }
+
+        lastTranscript = command;
+        lastTranscriptTime = now;
+
+        if (
+          [
+            'reset',
+            'show all',
+            'show everything',
+            'show me everything',
+            'clear',
+            'all items',
+            'reset list'
+          ].includes(command)
+        ) {
+          resetSearch();
+          return;
+        }
+
+        if (
+          [
+            'stop',
+            'stop listening',
+            'stop voice',
+            'stop microphone',
+            'turn off voice',
+            'turn off microphone'
+          ].includes(command)
+        ) {
+          stopVoice();
+          return;
+        }
+
+        const match = getWeaponMatch(spoken);
+
+        $('searchInput').value = match
+          ? match.name
+          : spoken;
+
+        $('typeFilter').value = 'all';
+        renderItems();
+
+        $('status').textContent = match
+          ? 'Showing: ' + match.name
+          : 'Searching for: ' + spoken;
+      }
+
+      function renderItems() {
+        const query = normalize(
+          $('searchInput').value
+        );
+
+        const type = $('typeFilter').value;
+
+        const filtered = items
+          .filter(item =>
+            (!query ||
+              normalize(item.name).includes(query)) &&
+            (type === 'all' || item.type === type)
+          )
+          .sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+
+        $('count').textContent =
+          filtered.length +
+          ' item' +
+          (filtered.length === 1 ? '' : 's');
+
+        const container = $('items');
+        container.replaceChildren();
+
+        if (!filtered.length) {
+          const message = document.createElement('p');
+          message.className = 'empty-state';
+          message.textContent =
+            'No matching items. Try another name or say “reset”.';
+
+          container.appendChild(message);
+          return;
+        }
+
+        filtered.forEach(item => {
+          const card = document.createElement('article');
+          card.className = 'item-card';
+
+          const heading = document.createElement('h2');
+          heading.textContent = item.name;
+
+          const typeBadge = document.createElement('span');
+          typeBadge.className = 'item-type';
+          typeBadge.textContent = item.type || 'Other';
+
+          const typeDetail = document.createElement('p');
+          typeDetail.className = 'item-detail';
+
+          const typeLabel = document.createElement('span');
+          typeLabel.textContent = 'Type';
+
+          const typeValue = document.createElement('strong');
+          typeValue.textContent = item.type || 'Other';
+
+          typeDetail.append(typeLabel, typeValue);
+
+          const valueDetail = document.createElement('p');
+          valueDetail.className = 'item-detail';
+
+          const valueLabel = document.createElement('span');
+          valueLabel.textContent = 'Value';
+
+          const valueNumber = document.createElement('strong');
+          valueNumber.className = 'item-value';
+          valueNumber.textContent = formatValue(item.value);
+
+          valueDetail.append(valueLabel, valueNumber);
+
+          const actions = document.createElement('div');
+          actions.className = 'card-actions';
+
+          const addOwned = document.createElement('button');
+          addOwned.type = 'button';
+          addOwned.textContent = 'Add owned';
+
+          addOwned.addEventListener('click', () => {
+            const existing = collection.find(
+              entry => entry.name === item.name
+            );
+
+            if (existing) {
+              existing.quantity += 1;
+            } else {
+              collection.push({
+                name: item.name,
+                quantity: 1
+              });
+            }
+
+            saveCollection();
+            renderCollection();
+
+            $('status').textContent =
+              item.name + ' was added to your collection.';
+          });
+
+          const edit = document.createElement('button');
+          edit.type = 'button';
+          edit.textContent = 'Edit';
+
+          edit.addEventListener('click', () => {
+            openDialog(item);
+          });
+
+          const remove = document.createElement('button');
+          remove.type = 'button';
+          remove.className = 'remove-button';
+          remove.textContent = 'Remove';
+
+          remove.addEventListener('click', () => {
+            if (confirm('Remove ' + item.name + '?')) {
+              items = items.filter(
+                entry => entry.name !== item.name
+              );
+
+              collection = collection.filter(
+                entry => entry.name !== item.name
+              );
+
+              saveItems();
+              saveCollection();
+              updateOwnedItemSelect();
+              renderCollection();
+              renderItems();
+            }
+          });
+
+          actions.append(addOwned, edit, remove);
+
+          card.append(
+            heading,
+            typeBadge,
+            typeDetail,
+            valueDetail,
+            actions
+          );
+
+          container.appendChild(card);
+        });
+      }
+
+      function openDialog(item = null) {
+        editingName = item ? item.name : null;
+
+        $('dialogTitle').textContent = item
+          ? 'Edit item'
+          : 'Add item';
+
+        $('itemName').value = item
+          ? item.name
+          : '';
+
+        $('itemValue').value =
+          item && item.value != null
+            ? item.value
+            : '';
+
+        $('itemType').value = item
+          ? item.type || 'Other'
+          : 'Godly';
+
+        $('itemImage').value = item
+          ? item.image || ''
+          : '';
+
+        $('itemDialog').showModal();
+      }
+
+      function playListeningSound() {
+        try {
+          const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+          if (!AudioContext) {
+            return;
+          }
+
+          const audioContext = new AudioContext();
+          const oscillator =
+            audioContext.createOscillator();
+
+          const gain =
+            audioContext.createGain();
+
+          oscillator.type = 'sine';
+          oscillator.frequency.value = 660;
+
+          gain.gain.setValueAtTime(
+            0.0001,
+            audioContext.currentTime
+          );
+
+          gain.gain.exponentialRampToValueAtTime(
+            0.035,
+            audioContext.currentTime + 0.02
+          );
+
+          gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            audioContext.currentTime + 0.16
+          );
+
+          oscillator.connect(gain);
+          gain.connect(audioContext.destination);
+
+          oscillator.start();
+          oscillator.stop(
+            audioContext.currentTime + 0.17
+          );
+
+          setTimeout(() => {
+            audioContext.close();
+          }, 250);
+        } catch (error) {
+          console.warn('Listening sound unavailable.');
+        }
+      }
+
+      function updateVoiceBubble() {
+        const bubble = $('voiceBubble');
+
+        bubble.classList.toggle(
+          'is-listening',
+          listening
+        );
+
+        bubble.setAttribute(
+          'aria-label',
+          listening
+            ? 'Stop voice search'
+            : 'Start voice search'
+        );
+
+        bubble.title = listening
+          ? 'Stop voice search'
+          : 'Start voice search';
+      }
+
+      function createRecognition() {
+        const SpeechRecognition =
+          window.SpeechRecognition ||
+          window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+          return null;
+        }
+
+        const instance = new SpeechRecognition();
+
+        instance.lang = 'en-US';
+        instance.continuous = false;
+        instance.interimResults = false;
+        instance.maxAlternatives = 1;
+
+        instance.onstart = () => {
+          restarting = false;
+          listening = true;
+
+          $('micButton').classList.add('is-listening');
+          $('micButton').textContent = 'Stop voice';
+
+          updateVoiceBubble();
+          playListeningSound();
+
+          $('status').textContent =
+            'Listening… say a weapon name.';
+        };
+
+        instance.onresult = event => {
+          const result =
+            event.results[0][0].transcript.trim();
+
+          if (result) {
+            handleVoiceCommand(result);
+          }
+        };
+
+        instance.onerror = event => {
+          if (event.error === 'aborted') {
+            return;
+          }
+
+          if (event.error === 'no-speech') {
+            $('status').textContent =
+              'No speech detected. Still listening...';
+            return;
+          }
+
+          if (event.error === 'not-allowed') {
+            listening = false;
+            $('micButton').classList.remove(
+              'is-listening'
+            );
+            $('micButton').textContent = 'Start voice';
+            updateVoiceBubble();
+
+            $('status').textContent =
+              'Microphone permission was denied. Allow microphone access and try again.';
+            return;
+          }
+
+          if (event.error === 'audio-capture') {
+            listening = false;
+            $('micButton').classList.remove(
+              'is-listening'
+            );
+            $('micButton').textContent = 'Start voice';
+            updateVoiceBubble();
+
+            $('status').textContent =
+              'No microphone was found. Check your microphone settings.';
+            return;
+          }
+
+          $('status').textContent =
+            'Voice recognition error: ' +
+            event.error +
+            '. Still trying to listen.';
+        };
+
+        instance.onend = () => {
+          recognition = null;
+
+          if (!listening) {
+            $('micButton').classList.remove(
+              'is-listening'
+            );
+            $('micButton').textContent = 'Start voice';
+            updateVoiceBubble();
+
+            $('status').textContent = 'Voice is off.';
+            return;
+          }
+
+          if (restarting) {
+            return;
+          }
+
+          restarting = true;
+
+          clearTimeout(restartTimer);
+
+          restartTimer = setTimeout(() => {
+            if (!listening) {
+              restarting = false;
+              return;
+            }
+
+            startRecognitionAgain();
+          }, 300);
+        };
+
+        return instance;
+      }
+
+      function startRecognitionAgain() {
+        if (!listening) {
+          return;
+        }
+
+        recognition = createRecognition();
+
+        if (!recognition) {
+          listening = false;
+          updateVoiceBubble();
+
+          $('status').textContent =
+            'Speech recognition is not supported in this browser.';
+          return;
+        }
+
+        try {
+          recognition.start();
+        } catch (error) {
+          recognition = null;
+          restarting = false;
+
+          clearTimeout(restartTimer);
+
+          restartTimer = setTimeout(
+            startRecognitionAgain,
+            700
+          );
+        }
+      }
+
+      function startVoice() {
+        const SpeechRecognition =
+          window.SpeechRecognition ||
+          window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+          $('status').textContent =
+            'Speech recognition is not supported in this browser. Try Chrome.';
+          return;
+        }
+
+        if (listening) {
+          return;
+        }
+
+        listening = true;
+        startRecognitionAgain();
+      }
+
+      function stopVoice() {
+        clearTimeout(restartTimer);
+
+        restarting = false;
+        listening = false;
+
+        if (recognition) {
+          try {
+            recognition.abort();
+          } catch (error) {
+            try {
+              recognition.stop();
+            } catch (stopError) {}
+          }
+        }
+
+        recognition = null;
+
+        $('micButton').classList.remove(
+          'is-listening'
+        );
+        $('micButton').textContent = 'Start voice';
+
+        updateVoiceBubble();
+
+        $('status').textContent = 'Voice is off.';
+      }
+
+      $('micButton').addEventListener(
+        'click',
+        () => {
+          listening
+            ? stopVoice()
+            : startVoice();
+        }
+      );
+
+      $('voiceBubble').addEventListener(
+        'click',
+        () => {
+          listening
+            ? stopVoice()
+            : startVoice();
+        }
+      );
+
+      $('resetButton').addEventListener(
+        'click',
+        resetSearch
+      );
+
+      $('searchInput').addEventListener(
+        'input',
+        renderItems
+      );
+
+      $('typeFilter').addEventListener(
+        'change',
+        renderItems
+      );
+
+      $('addButton').addEventListener(
+        'click',
+        () => openDialog()
+      );
+
+      $('addOwnedButton').addEventListener(
+        'click',
+        addToCollection
+      );
+
+      $('cancelButton').addEventListener(
+        'click',
+        () => $('itemDialog').close()
+      );
+
+      $('itemForm').addEventListener(
+        'submit',
+        event => {
+          event.preventDefault();
+
+          const name = $('itemName').value.trim();
+          const valueText =
+            $('itemValue').value.trim();
+
+          const item = {
+            name,
+            value:
+              valueText === ''
+                ? null
+                : Number(valueText),
+            type: $('itemType').value,
+            image: $('itemImage').value.trim()
+          };
+
+          if (
+            !name ||
+            (
+              item.value !== null &&
+              (
+                !Number.isFinite(item.value) ||
+                item.value < 0
+              )
+            )
+          ) {
+            return;
+          }
+
+          const duplicate = items.find(
+            existing =>
+              normalize(existing.name) ===
+              normalize(name)
+          );
+
+          if (
+            duplicate &&
+            normalize(name) !==
+            normalize(editingName || '')
+          ) {
+            if (
+              !confirm(
+                'An item with that name exists. Replace it?'
+              )
+            ) {
+              return;
+            }
+          }
+
+          const oldName = editingName;
+
+          items = items.filter(
+            existing =>
+              normalize(existing.name) !==
+                normalize(editingName || '') &&
+              normalize(existing.name) !==
+                normalize(name)
+          );
+
+          items.push(item);
+
+          if (oldName && oldName !== name) {
+            collection = collection.map(entry => {
+              return entry.name === oldName
+                ? { ...entry, name }
+                : entry;
+            });
+          }
+
+          saveItems();
+          saveCollection();
+
+          updateOwnedItemSelect();
+          renderCollection();
+
+          $('itemDialog').close();
+          $('searchInput').value = '';
+
+          renderItems();
+        }
+      );
+
+      $('exportButton').addEventListener(
+        'click',
+        () => {
+          const exportData = {
+            items,
+            collection
+          };
+
+          const blob = new Blob(
+            [JSON.stringify(exportData, null, 2)],
+            { type: 'application/json' }
+          );
+
+          const url =
+            URL.createObjectURL(blob);
+
+          const link =
+            document.createElement('a');
+
+          link.href = url;
+          link.download = 'mm2-values-and-collection.json';
+          link.click();
+
+          URL.revokeObjectURL(url);
+
+          $('status').textContent =
+            'Items and collection exported.';
+        }
+      );
+
+      $('importInput').addEventListener(
+        'change',
+        async event => {
+          const file =
+            event.target.files &&
+            event.target.files[0];
+
+          if (!file) {
+            return;
+          }
+
+          try {
+            const data =
+              JSON.parse(await file.text());
+
+            const importedItems = Array.isArray(data)
+              ? data
+              : data.items;
+
+            const importedCollection =
+              Array.isArray(data.collection)
+                ? data.collection
+                : [];
+
+            if (
+              !Array.isArray(importedItems) ||
+              !importedItems.every(
+                item =>
+                  item &&
+                  typeof item.name === 'string'
+              )
+            ) {
+              throw new Error('Invalid format');
+            }
+
+            items = importedItems
+              .map(item => ({
+                name: item.name.trim(),
+                value:
+                  item.value === '' ||
+                  item.value == null
+                    ? null
+                    : Number(item.value),
+                type: item.type || 'Other',
+                image: item.image || ''
+              }))
+              .filter(item => item.name);
+
+            collection = importedCollection
+              .map(entry => ({
+                name: String(entry.name || '').trim(),
+                quantity: Math.max(
+                  1,
+                  Number(entry.quantity) || 1
+                )
+              }))
+              .filter(entry =>
+                entry.name &&
+                items.some(item =>
+                  normalize(item.name) ===
+                  normalize(entry.name)
+                )
+              );
+
+            saveItems();
+            saveCollection();
+
+            updateOwnedItemSelect();
+            renderCollection();
+            renderItems();
+
+            $('status').textContent =
+              'Imported ' + items.length + ' items and your collection.';
+          } catch (error) {
+            alert(
+              'Could not import that file. Choose a valid MM2 values JSON file.'
+            );
+          }
+
+          event.target.value = '';
+        }
+      );
+
+      updateOwnedItemSelect();
+      renderCollection();
+      renderItems();
+      updateVoiceBubble();
+    })();
+  </script>
+
+
+<grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"></grammarly-desktop-integration><grammarly-assistant-notch-view role="presentation" data-grammarly-ignore-keyboard-events="true" data-grammarly-notch-instance-id="check:4abdf7d5-cfa6-41a6-b6d2-0a3de030fcfe" data-grammarly-shadow-root="true" class="dnXmp" style="visibility: visible !important; --rem: 16;"></grammarly-assistant-notch-view></body></html>
